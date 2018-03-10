@@ -35,6 +35,7 @@ Borrow::~Borrow()
 bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 {
 	char action = ' ';
+	string badData;
 	int id;
 	char mediaType = ' ';
 	char genre = ' ';
@@ -44,65 +45,69 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	string lastNameMajor;
 	int releaseMonth;
 	int releaseYear;
-
+	bool returnValue;
 
 	//search store inventory to find movie based on movie type, binary tree
 	//change customers history and inventory
 	//change stores inventory.
 
-	while (true)
-	{
+	
 		inputFile >> action;
 		inputFile >> id;
 		
 		if (store->getCustomerHashTablePtr()->retrieve(id) == NULL)
 		{
 			cout << "Incorrect Customer ID." << endl;
-			break;
-		}
-		
-		//get customer valid account 
-		IPerson* customerInfo = store->getCustomerHashTablePtr()->retrieve(id);
-
-		inputFile >> mediaType; //no need to handle mediaType if its not D
-
-		inputFile >> genre;
-		if (genre != 'F' || genre != 'D' || genre != 'C')
+			getline(inputFile, badData); //get the rest of the data of the wrong ID
+			returnValue = false;
+			
+		} 
+		else
 		{
-			cout << "Invalid Movie Code." << endl;
-			break;
-		}
-		else if (genre == 'F')
-		{
-			getline(inputFile, movieTitle, ',');
-			//search inventory of store if not found then break
-			inputFile >> releaseYear;
 
-			//if movie in inventory cotinue
-		}
-		else if (genre == 'D')
-		{
-			getline(inputFile, director, ',');
-			//search inventory of store if not found then break
-			getline(inputFile, movieTitle, ',');
-		}
-		else if (genre == 'C') 
-		{
-			inputFile >> releaseMonth;
-			inputFile >> releaseYear;
-			inputFile >> firstNameMajor;
-			inputFile >> lastNameMajor;
-			//search inventory of store if not found then break
-		}
 
-		break;
-	}
+			//get customer valid account 
+			IPerson* customerInfo;
+			static_cast<Customer*>(customerInfo) = store->getCustomerHashTablePtr()->retrieve(id);
 
-	
-	//customer setHistory of actions since all parameters were met
-	//customerInfo->setHistory();
+			inputFile >> mediaType; //no need to handle mediaType if its not D
 
-	//customer dvd inventory
-	
-	
+			inputFile >> genre;
+			if (genre != 'F' || genre != 'D' || genre != 'C')
+			{
+				cout << "Invalid Movie Code." << endl;
+				returnValue = false;
+			
+			}
+			else if (genre == 'F')
+			{
+				getline(inputFile, movieTitle, ',');
+				//search inventory of store if not found then break
+				inputFile >> releaseYear;
+				returnValue = true;
+				//customerInfo->setHistory(action + " " + id + " D " + "F " + movieTitle + ", " + releaseYear)
+			}
+			else if (genre == 'D')
+			{
+				getline(inputFile, director, ',');
+				//search inventory of store if not found then break
+				getline(inputFile, movieTitle, ',');
+				returnValue = true;
+				//customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",") 
+			}
+			else if (genre == 'C')
+			{
+				inputFile >> releaseMonth;
+				inputFile >> releaseYear;
+				inputFile >> firstNameMajor;
+				inputFile >> lastNameMajor;
+				returnValue = true;
+				//search inventory of store if not found
+				//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
+			}
+			
+		}
+			
+	return returnValue; 
 }
+
