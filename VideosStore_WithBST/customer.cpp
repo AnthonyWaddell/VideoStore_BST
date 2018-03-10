@@ -9,8 +9,12 @@ using namespace std;
 // --------------------------------------------------------------------------
 Customer::Customer(string firstName, string lastName, int id)
 {
-	IPerson *new_customer = new IPerson(firstName, lastName, id);
-
+	//IPerson *new_customer = new IPerson(firstName, lastName, id);
+	//IPerson(firstName, lastName, id);
+	m_firstName = firstName;
+	m_lastName = lastName;
+	m_id = id;
+	m_hashKey = id;
 }
 
 // --------------------------------------------------------------------------

@@ -1,15 +1,16 @@
 #include "hash.h"
+#include <iostream>
 
 // --------------------------------------------------------------------------
 // hash table constructor
 // --------------------------------------------------------------------------
 Hash::Hash()
 {
-	m_hashTable = new IPerson*[TABLE_SIZE];
+	//m_hashTable = new IPerson*[TABLE_SIZE];
 
 	for (int i = 0; i < TABLE_SIZE; i++)
 	{
-		m_hashTable[i] = NULL;
+		hashTable[i] = NULL;
 	}
 }
 
@@ -20,26 +21,35 @@ Hash::~Hash()
 {
 	for (int i = 0; i < TABLE_SIZE; i++)
 	{
-		if (m_hashTable[i] != NULL)
+		if (hashTable[i] != NULL)
 		{
 			// Think this is gonna cause a memory leak
-			delete m_hashTable[i];
-			m_hashTable[i] = NULL;
+			delete hashTable[i];
+			hashTable[i] = NULL;
 		}
 	}
-	delete m_hashTable;
+	delete hashTable;
 }
 
 // --------------------------------------------------------------------------
 // insert
 // --------------------------------------------------------------------------
-bool Hash::insert(IPerson* person)
-{
-	if (person->getHashKey() < TABLE_SIZE || person->getHashKey() > 0)
+bool Hash::insert(Customer* customer)
+{	
+	//if(person->getHashKey() < TABLE_SIZE && person->getHashKey() > 0)
+	if (customer->getHashKey() >= 0)
 	{
 		int hashVal;
-		hashVal = person->getHashKey() % TABLE_SIZE;
-		m_hashTable[hashVal] = person;
+		hashVal = customer->getHashKey() % TABLE_SIZE;
+		if (hashTable[hashVal] == NULL)
+		{
+			hashTable[hashVal] = customer;
+		}
+		else
+		{
+			
+			cout << "collision at " << hashVal << endl;
+		}
 		return true;
 	}
 	else
@@ -53,12 +63,12 @@ bool Hash::insert(IPerson* person)
 // --------------------------------------------------------------------------
 IPerson* Hash::retrieve(int key)
 {
-	if (m_hashTable[key] == NULL)
+	if (hashTable[key] == NULL)
 	{
 		return NULL;
 	}
 	else
 	{
-		return m_hashTable[key];
+		return hashTable[key];
 	}
 }

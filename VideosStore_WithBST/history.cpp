@@ -33,17 +33,17 @@ bool History::processAction(std::ifstream& inputFile, IStore* store)
 	inputFile >> action;
 	inputFile >> id;
 
-	if (store->getCustomerHashTablePtr()->retrieve(id) == NULL)
+	if (store->getCustomerHashTablePtr().retrieve(id) == NULL)
 	{
 		cout << "Incorrect Customer ID." << endl;
 		getline(inputFile, badData); //get the rest of the data of the wrong ID
 		returnValue = false;
 				
 	}
-	else if (store->getCustomerHashTablePtr()->retrieve(id) != NULL)
+	else if (store->getCustomerHashTablePtr().retrieve(id) != NULL)
 	{
 		IPerson* historyPerson;
-		(historyPerson) = store->getCustomerHashTablePtr()->retrieve(id);
+		(historyPerson) = store->getCustomerHashTablePtr().retrieve(id);
 		returnValue = true;
 		//historyPerson->getDVDHistory;
 	}

@@ -52,13 +52,13 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 
 	//inputFile >> action; don't know if we need this, keeping for now in case we do
 	inputFile >> id;
-	if (store->getCustomerHashTablePtr()->retrieve(id) == NULL)
+	if (store->getCustomerHashTablePtr().retrieve(id) == NULL)
 	{
 		cout << "Incorrect Customer ID." << endl;
 	}
 
 	// Get customer valid account 
-	IPerson* customerInfo = store->getCustomerHashTablePtr()->retrieve(id);
+	IPerson* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
 
 	// Read in media type (in implementation only dvd), and genre
 	inputFile >> mediaType;

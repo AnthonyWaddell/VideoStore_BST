@@ -56,22 +56,20 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 // --------------------------------------------------------------------------
 void OriginalStore::buildCustomers(std::ifstream & inputFileCustomers)
 {
-	while (true)
+	int id;
+	string first_name;
+	string last_name;
+
+	// For some reason it was reading last customer (donald duck) twice? changed to read in this way to break at end of file
+	while (inputFileCustomers >> id >> last_name >> first_name)
 	{
-		if (inputFileCustomers.eof())
-		{
-			break;
-		}
-
-		int id;
-		string first_name;
-		string last_name;
-
-		inputFileCustomers >> id;
-		getline(inputFileCustomers, last_name, ' ');
-		getline(inputFileCustomers, first_name, ' ');
-		IPerson *newCustomer = new Customer(first_name, last_name, id);
-		m_customerHashPtr->insert(newCustomer);
+		//if (inputFileCustomers.eof())
+		//{
+		//	break;
+		//}
+		//inputFileCustomers >> id >> last_name >> first_name;
+		Customer *newCustomer = new Customer(first_name, last_name, id);
+		m_customerHashPtr.insert(newCustomer);
 	}
 }
 

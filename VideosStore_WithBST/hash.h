@@ -1,4 +1,4 @@
-// ---------------------------- hash.h ---------------------------------------
+ // ---------------------------- hash.h ---------------------------------------
 // Name and Section: Ryan Harlich, Rio Zhu, Anthony Waddell, Chris Salazar 
 //                   CSS 343 B
 // Created: February 17, 2018
@@ -49,7 +49,7 @@ public:
   // not full.
   // Parameter: person - A IPerson* that is to be inserted into the hash table.
   // --------------------------------------------------------------------------
-  bool insert(IPerson* person);
+  bool insert(Customer* customer);
 
   // ---------------------------- ~Hash ---------------------------------------
   // Retrieves and returns a IPerson* given their hash key. In the case of a
@@ -64,7 +64,8 @@ public:
   IPerson* retrieve(int key);
 
 private:
-  IPerson** m_hashTable; // A hash table of IPerson pointers
+  //IPerson** m_hashTable; // A hash table of IPerson pointers
+	Customer *hashTable[TABLE_SIZE];
 };
 
 #endif // !HASH_

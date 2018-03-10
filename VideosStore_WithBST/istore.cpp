@@ -14,13 +14,13 @@ IStore::IStore()
 IStore::~IStore()
 {
 	// I'm like 99% sure this will cause a fat memory leak
-	delete m_customerHashPtr;
+	//delete m_customerHashPtr;
 }
 
 // --------------------------------------------------------------------------
 // accessor for m_customerHashPtr
 // --------------------------------------------------------------------------
-Hash * IStore::getCustomerHashTablePtr()
+Hash IStore::getCustomerHashTablePtr()
 {
 	return m_customerHashPtr;
 }

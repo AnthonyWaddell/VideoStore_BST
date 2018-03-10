@@ -75,7 +75,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  Hash* getCustomerHashTablePtr();
+  Hash getCustomerHashTablePtr();
 
   BinTree getComedyTree() { return comedyTree; }
   BinTree getDramaTree() { return dramaTree; }
@@ -100,7 +100,7 @@ protected: //changed this from private so we can access hashtable & linked list
   // --------------------------------------------------------------------------
   virtual void buildInventory(ifstream& inputFileInventory) = 0;
 
-  Hash* m_customerHashPtr;      // A Hash Table that contains customers
+  Hash m_customerHashPtr;      // A Hash Table that contains customers
   BinTree comedyTree;			// A tree for comedy inventory
   BinTree dramaTree;			// A tree for drama inventory
   BinTree classicalTree;		// A tree for classical inventory
