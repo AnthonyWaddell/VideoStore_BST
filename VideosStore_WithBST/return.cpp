@@ -44,63 +44,53 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	string lastNameMajor;
 	int releaseMonth;
 	int releaseYear;
-
+	bool return_value = false;
 
 	//search store inventory to find movie based on movie type, binary tree
 	//change customers history and inventory
 	//change stores inventory.
 
-	while (true)
+	//inputFile >> action; don't know if we need this, keeping for now in case we do
+	inputFile >> id;
+	if (store->getCustomerHashTablePtr()->retrieve(id) == NULL)
 	{
-		inputFile >> action;
-		inputFile >> id;
+		cout << "Incorrect Customer ID." << endl;
+	}
 
-		if (store->getCustomerHashTablePtr->retrieve(id) == NULL)
-		{
-			cout << "Incorrect Customer ID." << endl;
-			break;
-		}
+	// Get customer valid account 
+	IPerson* customerInfo = store->getCustomerHashTablePtr()->retrieve(id);
 
-		//get customer valid account 
-		Customer* customerInfo = store->getCustomerHashTablePtr->retrieve(id);
+	// Read in media type (in implementation only dvd), and genre
+	inputFile >> mediaType;
+	inputFile >> genre;
 
-		inputFile >> mediaType; //no need to handle mediaType if its not D
-
-		inputFile >> genre;
-		if (genre != 'F' || genre != 'D' || genre != 'C')
-		{
-			cout << "Invalid Movie Code." << endl;
-			break;
-		}
-		else if (genre == 'F')
-		{
-			getline(inputFile, movieTitle, ',');
-			//search inventory of store if not found then break
-			inputFile >> releaseYear;
-
-			//if movie in inventory cotinue
-		}
-		else if (genre == 'D')
-		{
-			getline(inputFile, director, ',');
-			//search inventory of store if not found then break
-			getline(inputFile, movieTitle, ',');
-		}
-		else if (genre == 'C')
-		{
-			inputFile >> releaseMonth;
-			inputFile >> releaseYear;
-			inputFile >> firstNameMajor;
-			inputFile >> lastNameMajor;
-			//search inventory of store if not found then break
-		}
-
+	switch (genre)
+	{
+	case 'F':
+		// Get comedy attributes and return comedy film
+		getline(inputFile, movieTitle, ',');
+		inputFile >> releaseYear;
+		return_value = store->getComedyTree().returnComedy(movieTitle, releaseYear, store->getComedyTree().getRoot());
+		break;
+	case 'D':
+		// Get drama attributes and return drama film
+		getline(inputFile, director, ',');
+		getline(inputFile, movieTitle, ',');
+		return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+		break;
+	case 'C':
+		// Get classical attributes and return drama film
+		inputFile >> releaseMonth >> releaseYear >> firstNameMajor >> lastNameMajor;
+		return_value = store->getClassicalTree().returnClassical
+		(releaseMonth, releaseYear, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
+		break;
+	default:
+		cout << "Invalid Movie Code." << endl;
 		break;
 	}
 
-
 	//customer setHistory of actions since all parameters were met
 	//customerInfo->setHistory();
-
 	//customer dvd inventory
+	return return_value;
 }
