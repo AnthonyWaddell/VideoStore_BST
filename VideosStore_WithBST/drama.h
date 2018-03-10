@@ -43,34 +43,34 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(string& genDisplayString);
 
-  // ---------------------------- displaySearchKey ----------------------------
-  // Displays the search key information of the drama DVD.
-  // Preconditions: None.
-  // Postconditions: outStream contains drama DVD search key information.
-  // Parameter: outStream - A out stream for the display.
-  // --------------------------------------------------------------------------
-  virtual void displaySearchKey(std::ostream& outStream);
+  //// ---------------------------- displaySearchKey ----------------------------
+  //// Displays the search key information of the drama DVD.
+  //// Preconditions: None.
+  //// Postconditions: outStream contains drama DVD search key information.
+  //// Parameter: outStream - A out stream for the display.
+  //// --------------------------------------------------------------------------
+  //virtual void displaySearchKey(std::ostream& outStream);
 
-  // ---------------------------- genSearchKey --------------------------------
-  // Generates an drama DVD that only contains its search key information.
-  // Preconditions: None.
-  // Postconditions: This drama DVD has its search key information updated. 
-  // ifStream will be at the end of its line.
-  // Parameter: inputFile - A file the contains the search key of the drama 
-  // DVD.
-  // --------------------------------------------------------------------------
-  virtual void genSearchKey(std::ifstream& inputFile);
+  //// ---------------------------- genSearchKey --------------------------------
+  //// Generates an drama DVD that only contains its search key information.
+  //// Preconditions: None.
+  //// Postconditions: This drama DVD has its search key information updated. 
+  //// ifStream will be at the end of its line.
+  //// Parameter: inputFile - A file the contains the search key of the drama 
+  //// DVD.
+  //// --------------------------------------------------------------------------
+  //virtual void genSearchKey(std::ifstream& inputFile);
 
-  // ---------------------------- compareSearchKey ----------------------------
-  // Detects if drama DVD is the same purely based of its search key 
-  // information.
-  // Preconditions: itemPtr is a type of drama DVD.
-  // Postconditions: None.
-  // Parameter: itemPtr - Item to compare against to see if it is the same
-  // item based of a search key information.
-  // Return: Returns true if item is same as item with search key information
-  // --------------------------------------------------------------------------
-  virtual bool compareSearchKey(IItem* itemPtr);
+  //// ---------------------------- compareSearchKey ----------------------------
+  //// Detects if drama DVD is the same purely based of its search key 
+  //// information.
+  //// Preconditions: itemPtr is a type of drama DVD.
+  //// Postconditions: None.
+  //// Parameter: itemPtr - Item to compare against to see if it is the same
+  //// item based of a search key information.
+  //// Return: Returns true if item is same as item with search key information
+  //// --------------------------------------------------------------------------
+  //virtual bool compareSearchKey(IItem* itemPtr);
 
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an drama DVD so all of this drama DVD fields are the 

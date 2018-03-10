@@ -58,7 +58,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 		if (store->getCustomerHashTablePtr()->retrieve(id) == NULL)
 		{
 			cout << "Incorrect Customer ID." << endl;
-			getline(inputFile, badData); //get the rest of the data of the wrong ID
+			getline(inputFile, badData); //get the rest of the  data of the wrong ID
 			returnValue = false;
 			
 		} 
@@ -68,7 +68,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 
 			//get customer valid account 
 			IPerson* customerInfo;
-			static_cast<Customer*>(customerInfo) = store->getCustomerHashTablePtr()->retrieve(id);
+			(customerInfo) = store->getCustomerHashTablePtr()->retrieve(id);
 
 			inputFile >> mediaType; //no need to handle mediaType if its not D
 

@@ -43,7 +43,7 @@ bool History::processAction(std::ifstream& inputFile, IStore* store)
 	else if (store->getCustomerHashTablePtr()->retrieve(id) != NULL)
 	{
 		IPerson* historyPerson;
-		static_cast<Customer*>(historyPerson) = store->getCustomerHashTablePtr()->retrieve(id);
+		(historyPerson) = store->getCustomerHashTablePtr()->retrieve(id);
 		returnValue = true;
 		//historyPerson->getDVDHistory;
 	}

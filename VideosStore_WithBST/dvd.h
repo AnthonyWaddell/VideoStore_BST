@@ -52,32 +52,32 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(std::string& genDisplayString) = 0;
 
-  // ---------------------------- displaySearchKey ----------------------------
-  // Displays the search key information of the DVD.
-  // Preconditions: None.
-  // Postconditions: outStream contains DVD search key information.
-  // Parameter: outStream - A out stream for the display.
-  // --------------------------------------------------------------------------
-  virtual void displaySearchKey(std::ostream& outStream) = 0;
+  //// ---------------------------- displaySearchKey ----------------------------
+  //// Displays the search key information of the DVD.
+  //// Preconditions: None.
+  //// Postconditions: outStream contains DVD search key information.
+  //// Parameter: outStream - A out stream for the display.
+  //// --------------------------------------------------------------------------
+  //virtual void displaySearchKey(std::ostream& outStream) = 0;
 
-  // ---------------------------- genSearchKey --------------------------------
-  // Generates an DVD that only contains its search key information.
-  // Preconditions: None.
-  // Postconditions: This DVD has its search key information updated. 
-  // ifStream will be at the end of its line.
-  // Parameter: inputFile - A file the contains the search key of the DVD.
-  // --------------------------------------------------------------------------
-  virtual void genSearchKey(std::ifstream& inputFile) = 0;
+  //// ---------------------------- genSearchKey --------------------------------
+  //// Generates an DVD that only contains its search key information.
+  //// Preconditions: None.
+  //// Postconditions: This DVD has its search key information updated. 
+  //// ifStream will be at the end of its line.
+  //// Parameter: inputFile - A file the contains the search key of the DVD.
+  //// --------------------------------------------------------------------------
+  //virtual void genSearchKey(std::ifstream& inputFile) = 0;
 
-  // ---------------------------- compareSearchKey ----------------------------
-  // Detects if DVD is the same purely based of its search key information.
-  // Preconditions: itemPtr is a type of DVD.
-  // Postconditions: None.
-  // Parameter: itemPtr - Item to compare against to see if it is the same
-  // item based of a search key information.
-  // Return: Returns true if item is same as item with search key information
-  // --------------------------------------------------------------------------
-  virtual bool compareSearchKey(IItem* itemPtr) = 0;
+  //// ---------------------------- compareSearchKey ----------------------------
+  //// Detects if DVD is the same purely based of its search key information.
+  //// Preconditions: itemPtr is a type of DVD.
+  //// Postconditions: None.
+  //// Parameter: itemPtr - Item to compare against to see if it is the same
+  //// item based of a search key information.
+  //// Return: Returns true if item is same as item with search key information
+  //// --------------------------------------------------------------------------
+  //virtual bool compareSearchKey(IItem* itemPtr) = 0;
 
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an DVD so all of this DVD fields are the same as

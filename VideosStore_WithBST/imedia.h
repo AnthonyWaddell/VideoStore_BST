@@ -43,32 +43,32 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(std::string& genDisplayString) = 0;
 
-  // ---------------------------- displaySearchKey ----------------------------
-  // Displays the search key information of the media.
-  // Preconditions: None.
-  // Postconditions: outStream contains media search key information.
-  // Parameter: outStream - A out stream for the display.
-  // --------------------------------------------------------------------------
-  virtual void displaySearchKey(std::ostream& outStream) = 0;
+  //// ---------------------------- displaySearchKey ----------------------------
+  //// Displays the search key information of the media.
+  //// Preconditions: None.
+  //// Postconditions: outStream contains media search key information.
+  //// Parameter: outStream - A out stream for the display.
+  //// --------------------------------------------------------------------------
+  //virtual void displaySearchKey(std::ostream& outStream) = 0;
 
-  // ---------------------------- genSearchKey --------------------------------
-  // Generates an media that only contains its search key information.
-  // Preconditions: None.
-  // Postconditions: This media has its search key information updated. 
-  // ifStream will be at the end of its line.
-  // Parameter: inputFile - A file the contains the search key of the media.
-  // --------------------------------------------------------------------------
-  virtual void genSearchKey(std::ifstream& inputFile) = 0;
+  //// ---------------------------- genSearchKey --------------------------------
+  //// Generates an media that only contains its search key information.
+  //// Preconditions: None.
+  //// Postconditions: This media has its search key information updated. 
+  //// ifStream will be at the end of its line.
+  //// Parameter: inputFile - A file the contains the search key of the media.
+  //// --------------------------------------------------------------------------
+  //virtual void genSearchKey(std::ifstream& inputFile) = 0;
 
-  // ---------------------------- compareSearchKey ----------------------------
-  // Detects if media is the same purely based of its search key information.
-  // Preconditions: itemPtr is a type of media.
-  // Postconditions: None.
-  // Parameter: itemPtr - Item to compare against to see if it is the same
-  // item based of a search key information.
-  // Return: Returns true if item is same as item with search key information
-  // --------------------------------------------------------------------------
-  virtual bool compareSearchKey(IItem* itemPtr) = 0;
+  //// ---------------------------- compareSearchKey ----------------------------
+  //// Detects if media is the same purely based of its search key information.
+  //// Preconditions: itemPtr is a type of media.
+  //// Postconditions: None.
+  //// Parameter: itemPtr - Item to compare against to see if it is the same
+  //// item based of a search key information.
+  //// Return: Returns true if item is same as item with search key information
+  //// --------------------------------------------------------------------------
+  //virtual bool compareSearchKey(IItem* itemPtr) = 0;
 
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an item so all of this media fields are the same as

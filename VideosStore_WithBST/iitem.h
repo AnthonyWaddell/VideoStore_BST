@@ -42,32 +42,32 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(std::string& genDisplayString) = 0;
 
-  // ---------------------------- displaySearchKey ----------------------------
-  // Displays the search key information of the item.
-  // Preconditions: None.
-  // Postconditions: outStream contains item search key information.
-  // Parameter: outStream - A out stream for the display.
-  // --------------------------------------------------------------------------
-  virtual void displaySearchKey(std::ostream& outStream) = 0;
+  //// ---------------------------- displaySearchKey ----------------------------
+  //// Displays the search key information of the item.
+  //// Preconditions: None.
+  //// Postconditions: outStream contains item search key information.
+  //// Parameter: outStream - A out stream for the display.
+  //// --------------------------------------------------------------------------
+  //virtual void displaySearchKey(std::ostream& outStream) = 0;
 
-  // ---------------------------- genSearchKey --------------------------------
-  // Generates an item that only contains its search key information.
-  // Preconditions: None.
-  // Postconditions: This item has its search key information updated. 
-  // ifStream will be at the end of its line.
-  // Parameter: inputFile - A file the contains the search key of the item.
-  // --------------------------------------------------------------------------
-  virtual void genSearchKey(std::ifstream& inputFile) = 0;
+  //// ---------------------------- genSearchKey --------------------------------
+  //// Generates an item that only contains its search key information.
+  //// Preconditions: None.
+  //// Postconditions: This item has its search key information updated. 
+  //// ifStream will be at the end of its line.
+  //// Parameter: inputFile - A file the contains the search key of the item.
+  //// --------------------------------------------------------------------------
+  //virtual void genSearchKey(std::ifstream& inputFile) = 0;
 
-  // ---------------------------- compareSearchKey ----------------------------
-  // Detects if item is the same purely based of its search key information.
-  // Preconditions: None.
-  // Postconditions: None.
-  // Parameter: itemPtr - Item to compare against to see if it is the same
-  // item based of a search key information.
-  // Return: Returns true if item is same as item with search key information
-  // --------------------------------------------------------------------------
-  virtual bool compareSearchKey(IItem* itemPtr) = 0;
+  //// ---------------------------- compareSearchKey ----------------------------
+  //// Detects if item is the same purely based of its search key information.
+  //// Preconditions: None.
+  //// Postconditions: None.
+  //// Parameter: itemPtr - Item to compare against to see if it is the same
+  //// item based of a search key information.
+  //// Return: Returns true if item is same as item with search key information
+  //// --------------------------------------------------------------------------
+  //virtual bool compareSearchKey(IItem* itemPtr) = 0;
 
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an item so all of this items fields are the same as
