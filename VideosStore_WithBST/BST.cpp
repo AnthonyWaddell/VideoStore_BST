@@ -265,6 +265,100 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+bool BinTree::returnComedy(string m_title, int m_year, Node *& cur)
+{
+	bool return_value = false;
+	int one_copy = 1;
+
+	// If it's less than this nodes movie data
+	if (m_title < cur->data->getTitle())
+	{
+		return returnComedy(m_title, m_year, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getTitle() == m_title && cur->data->getYearReleased() == m_year)
+	{
+		int currentStock = cur->data->getStock();
+		cur->data->setStock(currentStock + one_copy);
+		return_value = true;
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnComedy(m_title, m_year, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+bool BinTree::returnDrama(string m_director, string m_title, Node *& cur)
+{
+	bool return_value = false;
+	int one_copy = 1;
+
+	// If it's less than this nodes movie data
+	if (m_director < cur->data->getDirector())
+	{
+		return returnDrama(m_director, m_title, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getDirector() == m_director && cur->data->getTitle() == m_title)
+	{
+		int currentStock = cur->data->getStock();
+		cur->data->setStock(currentStock + one_copy);
+		return_value = true;
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnDrama(m_director, m_title, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//  -	classics (‘C’) are sorted by Release date, then Major actor
+//-----------------------------------------------------------------------------
+bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur)
+{
+	bool return_value = false;
+
+	int one_copy = 1;
+
+	// If it's less than this nodes movie data
+	if (m_year < cur->data->getYearReleased())
+	{
+		return returnClassical(m_month, m_year, m_first, m_last, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getYearReleased() == m_year && static_cast<Classical*>(cur->data)->getMonthReleased() == m_month)
+	{
+
+		// This should probably call this function again on the left & right child of this node?
+		int currentStock = cur->data->getStock();
+		cur->data->setStock(currentStock + one_copy);
+		// Check for same movie, different actor
+		if (cur->left_child->data->getYearReleased() == m_year &&
+			static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
+			return_value = true;
+
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnClassical(m_month, m_year, m_first, m_last, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
 ostream &operator<<(ostream &sout, BinTree &tree)
 {
 	tree.inorder_Helper(tree.root);
