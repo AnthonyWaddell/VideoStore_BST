@@ -92,7 +92,6 @@ void OriginalStore::buildInventory(std::ifstream & inputFileInventory)
 			break;
 		}
 		inputFileInventory >> genre;
-
 		dvd_ptr = DFactory::createDVD(genre);
 		if (dvd_ptr == NULL)
 		{

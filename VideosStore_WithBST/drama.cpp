@@ -55,14 +55,17 @@ void Drama::genCopy(IItem * itemPtr)
 // --------------------------------------------------------------------------
 void Drama::buildDVD(char genre, ifstream & inputFileInventory)
 {
-	// This needs error handling
+	string comma = " ";
+
+	// D, 10, Barry Levinson, Good Morning Vietnam, 1988
+	// D, 10, Gus Van Sant, Good Will Hunting, 2000
 
 	this->setGenreAbbrev(genre);
+	getline(inputFileInventory, comma, ' ');
 	inputFileInventory >> this->m_stock;
-	//maybe a cin.get() or cin.ignore() to eat up space/comma
+	getline(inputFileInventory, comma, ' ');
 	getline(inputFileInventory, this->m_director, ',');
 	getline(inputFileInventory, this->m_title, ',');
-	//maybe a cin.get() or cin.ignore() to eat up the space/comma
 	inputFileInventory >> this->m_yearReleased;
 }
 

@@ -67,12 +67,15 @@ void Classical::genCopy(IItem * itemPtr)
 void Classical::buildDVD(char genre, ifstream & inputFileInventory)
 {
 	// This needs error handling
+	string comma = "";
 
-
-	//C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
+	// C, 10, Michael Curtiz, Casablanca, Ingrid Bergman 8 1942
+	// C, 10, Michael Curtiz, Casablanca, Humphrey Bogart 8 1942
+	// C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
 	this->setGenreAbbrev(genre);
+	getline(inputFileInventory, comma, ' ');
 	inputFileInventory >> this->m_stock;
-	//maybe a cin.get() or cin.ignore() to eat up space/comma
+	getline(inputFileInventory, comma, ' ');
 	getline(inputFileInventory, this->m_director, ',');
 	getline(inputFileInventory, this->m_title, ',');
 	inputFileInventory >> this->m_majorActorFirstName;

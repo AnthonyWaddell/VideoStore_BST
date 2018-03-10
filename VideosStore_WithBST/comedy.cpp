@@ -56,11 +56,13 @@ void Comedy::genCopy(IItem * itemPtr)
 // --------------------------------------------------------------------------
 void Comedy::buildDVD(char genre, std::ifstream & inputFileInventory)
 {
-	//F, 10, Nora Ephron, You've Got Mail, 1998
-	// This needs error handling
+	//F, 10, Nora Ephron, Sleepless in Seattle, 1993
+	string comma = " ";
 
 	this->setGenreAbbrev(genre);
+	getline(inputFileInventory, comma, ' ');
 	inputFileInventory >> this->m_stock;
+	getline(inputFileInventory, comma, ' ');
 	//maybe a cin.get() or cin.ignore() to eat up space/comma
 	getline(inputFileInventory, this->m_director, ',');
 	getline(inputFileInventory, this->m_title, ',');

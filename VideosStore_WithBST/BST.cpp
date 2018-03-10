@@ -145,22 +145,16 @@ void BinTree::makeEmpty_Helper(Node *&cur)
 bool BinTree::insertComedy(Node *& cur, DVD * datum)
 {
 	bool inserted = false;
-	int position = 0;
 	Comedy *temp = static_cast<Comedy*>(datum);
 
 	// Insert when empty spot is found
 	if (cur == NULL)
 	{
+		// I think this might cause a memory leak since root is already established as a node, we'll see lol
 		cur = new Node;
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
-		// If tree is empty, this is root node
-		if (isEmpty())
-		{
-			root = cur;
-		}
-		return true;
 	}
 
 	// Duplicate node found, do not insert
@@ -192,16 +186,11 @@ bool BinTree::insertDrama(Node *& cur, DVD * datum)
 	// Insert when empty spot is found
 	if (cur == NULL)
 	{
+		// might cause memory leak since root is already established as a node, we'll see lol
 		cur = new Node;
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
-		// If tree is empty, this is root node
-		if (isEmpty())
-		{
-			root = cur;
-		}
-		return true;
 	}
 
 	// Duplicate node found, do not insert
@@ -228,7 +217,7 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 {
 	bool inserted = false;
 	int position = 0;
-	Drama *temp = static_cast<Drama*>(datum);
+	Classical *temp = static_cast<Classical*>(datum);
 
 	// Insert when empty spot is found
 	if (cur == NULL)
@@ -237,12 +226,6 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
-		// If tree is empty, this is root node
-		if (isEmpty())
-		{
-			root = cur;
-		}
-		return true;
 	}
 
 	// Duplicate node found, do not insert
