@@ -58,7 +58,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	}
 
 	// Get customer valid account 
-	IPerson* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
+	Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
 
 	// Read in media type (in implementation only dvd), and genre
 	inputFile >> mediaType;
@@ -77,9 +77,9 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		// Get drama attributes and return drama film
 		getline(inputFile, director, ',');
 		getline(inputFile, movieTitle, ',');
-		//return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
-		//customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",")	
-		break;
+	/*	return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+		customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",")	
+		break;*/
 	case 'C':
 		// Get classical attributes and return drama film
 		inputFile >> releaseMonth >> releaseYear >> firstNameMajor >> lastNameMajor;

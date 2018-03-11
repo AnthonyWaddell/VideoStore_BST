@@ -34,17 +34,17 @@ Borrow::~Borrow()
 // --------------------------------------------------------------------------
 bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 {
-	char action = ' ';
-	string badData;
 	int id;
+	char action = ' ';
 	char mediaType = ' ';
 	char genre = ' ';
+	string badData;
 	string movieTitle;
 	string director;
 	string firstNameMajor;
 	string lastNameMajor;
-	int releaseMonth;
-	int releaseYear;
+	string releaseMonth;
+	string releaseYear;
 	bool returnValue;
 
 	//search store inventory to find movie based on movie type, binary tree
@@ -54,21 +54,18 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	
 		inputFile >> action;
 		inputFile >> id;
+		string s_id = to_string(id);
 		
 		if (store->getCustomerHashTablePtr().retrieve(id) == NULL)
 		{
 			cout << "Incorrect Customer ID." << endl;
 			getline(inputFile, badData); //get the rest of the  data of the wrong ID
 			returnValue = false;
-			
 		} 
 		else
 		{
-
-
 			//get customer valid account 
-			IPerson* customerInfo;
-			(customerInfo) = store->getCustomerHashTablePtr().retrieve(id);
+			Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
 
 			inputFile >> mediaType; //no need to handle mediaType if its not D
 
@@ -85,7 +82,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				//search inventory of store if not found then break
 				inputFile >> releaseYear;
 				returnValue = true;
-				//customerInfo->setHistory(action + " " + id + " D " + "F " + movieTitle + ", " + releaseYear)
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType + genre + movieTitle + ", " + releaseYear);
 			}
 			else if (genre == 'D')
 			{
@@ -93,7 +90,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				//search inventory of store if not found then break
 				getline(inputFile, movieTitle, ',');
 				returnValue = true;
-				//customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",") 
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle + ",");
 			}
 			else if (genre == 'C')
 			{
@@ -103,11 +100,8 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				inputFile >> lastNameMajor;
 				returnValue = true;
 				//search inventory of store if not found
-				//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lastNameMajor);
 			}
-			
 		}
-			
 	return returnValue; 
 }
-

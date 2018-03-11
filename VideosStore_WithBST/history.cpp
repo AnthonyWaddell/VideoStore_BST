@@ -43,7 +43,6 @@ bool History::processAction(std::ifstream& inputFile, IStore* store)
 	{
 		Customer* historyPerson = store->getCustomerHashTablePtr().retrieve(id);
 		cout << historyPerson->getFirstName() << historyPerson->getLastName() << ":" << endl;
-		
 		historyPerson->getDVDHistory();
 		returnValue = true;
 	}

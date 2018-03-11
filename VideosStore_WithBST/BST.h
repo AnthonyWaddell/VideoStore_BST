@@ -50,9 +50,9 @@ public:
 	bool insertClassical(Node *& cur, DVD *datum);
 
 	// Return functions
-	bool returnComedy(string m_title, int m_year, Node *&cur);
-	bool returnDrama(string m_director, string m_title, Node *&cur);
-	bool returnClassical(int m_month, int m_year, string m_first, string m_last, Node *&cur);
+	bool returnComedy(string m_title, int m_year, Node *&cur) const;
+	bool returnDrama(string m_director, string m_title, Node *&cur) const;
+	bool returnClassical(int m_month, int m_year, string m_first, string m_last, Node *&cur) const;
 
 	// Overloaded output operator and helper function
 	//friend ostream & operator<<(ostream &sout, BinTree &tree);

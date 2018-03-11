@@ -89,6 +89,7 @@ bool BinTree::isEmpty() const
 }
 
 
+
 //-----------------------------------------------------------------------------
 // Function:	bool BinTree::isEmpty() const
 // Title:		boolean empty function
@@ -248,7 +249,7 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-bool BinTree::returnComedy(string m_title, int m_year, Node *& cur)
+bool BinTree::returnComedy(string m_title, int m_year, Node *& cur) const
 {
 	bool return_value = false;
 	int one_copy = 1;
@@ -277,7 +278,7 @@ bool BinTree::returnComedy(string m_title, int m_year, Node *& cur)
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-bool BinTree::returnDrama(string m_director, string m_title, Node *& cur)
+bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 {
 	bool return_value = false;
 	int one_copy = 1;
@@ -306,7 +307,7 @@ bool BinTree::returnDrama(string m_director, string m_title, Node *& cur)
 //-----------------------------------------------------------------------------
 //  -	classics (‘C’) are sorted by Release date, then Major actor
 //-----------------------------------------------------------------------------
-bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur)
+bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
 {
 	bool return_value = false;
 
