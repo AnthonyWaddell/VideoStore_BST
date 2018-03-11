@@ -45,6 +45,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	string lastNameMajor;
 	int releaseMonth;
 	int releaseYear;
+	int key;
 	bool return_value = false;
 
 	//search store inventory to find movie based on movie type, binary tree
@@ -53,13 +54,15 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 
 	//inputFile >> action; don't know if we need this, keeping for now in case we do
 	inputFile >> id;
-	if (store->getCustomerHashTablePtr().retrieve(id) == NULL)
+	key = store->getCustomerHashTablePtr().generateHashKey(id);
+	if (store->getCustomerHashTablePtr().retrieve(key) == NULL)
 	{
+		getline(inputFile, badData);
 		cout << "Incorrect Customer ID." << endl;
 	}
 
 	// Get customer valid account 
-	Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
+	Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(key);
 
 	// Read in media type (in implementation only dvd), and genre
 	inputFile >> mediaType;
@@ -91,7 +94,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
 		break;
 	default:
-		cout << "Invalid Movie Code." << endl;
+		cout << "Invalid Movie Code: " << genre << endl;
 		getline(inputFile, badData);
 		break;
 	}

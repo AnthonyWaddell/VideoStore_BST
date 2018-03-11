@@ -59,7 +59,8 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 		key = store->getCustomerHashTablePtr().generateHashKey(id);
 		if (store->getCustomerHashTablePtr().retrieve(key) == NULL)
 		{
-			cout << "Incorrect Customer ID." << endl;
+			//getline(inputFile, badData);
+			cout << "Incorrect Customer ID: " << id << endl;
 			getline(inputFile, badData); //get the rest of the  data of the wrong ID
 			returnValue = false;
 		} 
@@ -100,7 +101,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 			}
 			else
 			{
-				cout << "Invalid Movie Code." << endl;
+				cout << "Invalid Movie Code: " << genre << endl;
 				getline(inputFile, badData);
 				returnValue = false;
 
