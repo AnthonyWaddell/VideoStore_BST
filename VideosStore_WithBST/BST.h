@@ -39,7 +39,7 @@ public:
 	//BinTree(const BinTree &);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
-	Node*& getRoot() { return root; }
+	Node*& getRoot() { return root; };
 											// Make Empty function and helper
 	void makeEmpty();						// make the tree empty so isEmpty returns true
 	void makeEmpty_Helper(Node *&cur);

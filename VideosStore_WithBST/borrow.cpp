@@ -35,7 +35,8 @@ Borrow::~Borrow()
 bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 {
 	int id;
-	char action = ' ';
+	int key;
+	string action = "B";
 	char mediaType = ' ';
 	char genre = ' ';
 	string badData;
@@ -52,11 +53,11 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	//change stores inventory.
 
 	
-		inputFile >> action;
+		//inputFile >> action;
 		inputFile >> id;
 		string s_id = to_string(id);
-		
-		if (store->getCustomerHashTablePtr().retrieve(id) == NULL)
+		key = store->getCustomerHashTablePtr().generateHashKey(id);
+		if (store->getCustomerHashTablePtr().retrieve(key) == NULL)
 		{
 			cout << "Incorrect Customer ID." << endl;
 			getline(inputFile, badData); //get the rest of the  data of the wrong ID
@@ -65,26 +66,21 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 		else
 		{
 			//get customer valid account 
-			Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(id);
+			Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(key);
 
 			inputFile >> mediaType; //no need to handle mediaType if its not D
 
 			inputFile >> genre;
-			if (genre != 'F' || genre != 'D' || genre != 'C')
-			{
-				cout << "Invalid Movie Code." << endl;
-				returnValue = false;
-			
-			}
-			else if (genre == 'F')
+
+			if (genre == 'F' && mediaType == 'D')
 			{
 				getline(inputFile, movieTitle, ',');
 				//search inventory of store if not found then break
 				inputFile >> releaseYear;
 				returnValue = true;
-				customerInfo->setHistory(action + " " + s_id + " " + mediaType + genre + movieTitle + ", " + releaseYear);
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType +  " " + genre + " " + movieTitle + ", " + releaseYear);
 			}
-			else if (genre == 'D')
+			else if (genre == 'D' && mediaType == 'D')
 			{
 				getline(inputFile, director, ',');
 				//search inventory of store if not found then break
@@ -92,7 +88,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				returnValue = true;
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle + ",");
 			}
-			else if (genre == 'C')
+			else if (genre == 'C' && mediaType == 'D')
 			{
 				inputFile >> releaseMonth;
 				inputFile >> releaseYear;
@@ -101,6 +97,13 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				returnValue = true;
 				//search inventory of store if not found
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+			}
+			else
+			{
+				cout << "Invalid Movie Code." << endl;
+				getline(inputFile, badData);
+				returnValue = false;
+
 			}
 		}
 	return returnValue; 

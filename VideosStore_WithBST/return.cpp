@@ -38,6 +38,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	int id;
 	char mediaType = ' ';
 	char genre = ' ';
+	string badData;
 	string movieTitle;
 	string director;
 	string firstNameMajor;
@@ -70,6 +71,8 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		// Get comedy attributes and return comedy film
 		getline(inputFile, movieTitle, ',');
 		inputFile >> releaseYear;
+		// comedyTree.insertComedy(comedyTree.getRoot(), dvd_ptr);
+		 //const Node*& temp = store->getComedyTree().getRoot();
 		//return_value = store->getComedyTree().returnComedy(movieTitle, releaseYear, store->getComedyTree().getRoot());
 		//customerInfo->setHistory(action + " " + id + " D " + "F " + movieTitle + ", " + releaseYear)
 		break;
@@ -89,6 +92,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		break;
 	default:
 		cout << "Invalid Movie Code." << endl;
+		getline(inputFile, badData);
 		break;
 	}
 

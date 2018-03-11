@@ -38,6 +38,7 @@ int Customer::getID()
 // --------------------------------------------------------------------------
 stack<string> Customer::getDVDHistory()
 {
+	string temp;
 	int counter = 1;
 	while (!m_dvdHistory.empty())
 	{	
