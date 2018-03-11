@@ -26,7 +26,6 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 	IAction *action_ptr = NULL;
 	char typeOfAction = ' ';
 	string invalidAction = "";
-	//IStore *newStore = new OriginalStore();
 
 	while (true)
 	{
@@ -47,7 +46,6 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 		{
 			action_ptr->processAction(inputFileCommands, this);
 		}
-
 	}
 }
 
@@ -63,11 +61,6 @@ void OriginalStore::buildCustomers(std::ifstream & inputFileCustomers)
 	// For some reason it was reading last customer (donald duck) twice? changed to read in this way to break at end of file
 	while (inputFileCustomers >> id >> last_name >> first_name)
 	{
-		//if (inputFileCustomers.eof())
-		//{
-		//	break;
-		//}
-		//inputFileCustomers >> id >> last_name >> first_name;
 		Customer *newCustomer = new Customer(first_name, last_name, id);
 		m_customerHashPtr.insert(newCustomer);
 	}
@@ -83,13 +76,13 @@ void OriginalStore::buildInventory(std::ifstream & inputFileInventory)
 	string bad_data = "";
 	bool duplicate = false;
 
-	while (true)
+	while (inputFileInventory >> genre)
 	{
 		if (inputFileInventory.eof())
 		{
 			break;
 		}
-		inputFileInventory >> genre;
+		/*inputFileInventory >> genre;*/
 		dvd_ptr = DFactory::createDVD(genre);
 		if (dvd_ptr == NULL)
 		{
