@@ -39,11 +39,11 @@ BinTree::BinTree()
 // Returns:		N/A
 // History Log: 01/24/18 AW Completed Function
 //-----------------------------------------------------------------------------
-BinTree::BinTree(const BinTree &other_tree)
-{
-	root = NULL;
-	*this = other_tree;
-}
+//BinTree::BinTree(const BinTree &other_tree)
+//{
+//	root = NULL;
+//	*this = other_tree;
+//}
 
 //-----------------------------------------------------------------------------
 // Function:	BinTree::~BinTree(
@@ -342,11 +342,16 @@ bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
-ostream &operator<<(ostream &sout, BinTree &tree)
+//ostream &operator<<(ostream &sout, BinTree &tree)
+//{
+//	tree.inorder_Helper(tree.root);
+//	cout << endl;
+//	return sout;
+//}
+
+void BinTree::print() const
 {
-	tree.inorder_Helper(tree.root);
-	cout << endl;
-	return sout;
+	inorder_Helper(root);
 }
 
 //-----------------------------------------------------------------------------
@@ -370,7 +375,7 @@ void BinTree::inorder_Helper(Node *cur) const
 		// Move down left subtree
 		inorder_Helper(cur->left_child);
 		// Display data
-		cur->data->display(cout);
+		cur->data->display();
 		// Move down right subtree
 		inorder_Helper(cur->right_child);
 	}

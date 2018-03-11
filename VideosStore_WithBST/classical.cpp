@@ -10,9 +10,9 @@ Classical::~Classical()
 // --------------------------------------------------------------------------
 //	Display function to output stream
 // --------------------------------------------------------------------------
-void Classical::display(ostream & outStream) const
+void Classical::display() const
 {
-	outStream << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
+	cout << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
 		", " << m_title << ", " << m_majorActorFirstName << " " <<
 		m_majorActorLastName << " " << m_monthReleased << " " <<
 		m_yearReleased << endl;

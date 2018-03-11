@@ -12,10 +12,10 @@ bool Inventory::processAction(ifstream & inputFile, IStore * store)
 	bool temp = true;
 	cout << "Store Inventory in order of Comedy, Drama, then Classic:" << endl;
 	cout << "Comedy Movies:" << endl;
-	cout << store->getComedyTree();
+	store->getComedyTree().print();
 	cout << "Drama Movies:" << endl;
-	cout << store->getDramaTree();
+	store->getDramaTree().print();
 	cout << "Classical Movies:" << endl;
-	cout << store->getClassicalTree();
+	store->getClassicalTree();
 	return temp;
 }

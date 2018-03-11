@@ -11,7 +11,6 @@ History::~History()
 {
 }
 
-
 // ---------------------------- processAction -------------------------------
 // Processes the history action reading what to do from a input file.
 // Preconditions: A valid IStore object. Correctly formatted input file line.
@@ -30,7 +29,7 @@ bool History::processAction(std::ifstream& inputFile, IStore* store)
 	int id;
 	bool returnValue;
 
-	inputFile >> action;
+	//inputFile >> action;
 	inputFile >> id;
 
 	if (store->getCustomerHashTablePtr().retrieve(id) == NULL)

@@ -32,7 +32,8 @@ public:
   // Postconditions: outStream contains classical DVD information.
   // Parameter: outStream - A out stream for the display.
   // --------------------------------------------------------------------------
-  virtual void display(ostream& outStream) const;
+ /* virtual void display(ostream& outStream) const;*/
+  virtual void display() const; 
 
   // ---------------------------- genDisplay ----------------------------------
   // Generates the display information into a string.

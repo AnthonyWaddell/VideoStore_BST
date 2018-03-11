@@ -10,9 +10,9 @@ Drama::~Drama()
 // --------------------------------------------------------------------------
 //	display object information to designated output stream
 // --------------------------------------------------------------------------
-void Drama::display(ostream & outStream) const
+void Drama::display() const
 {
-	outStream << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
+	cout << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
 		", " << m_title << ", " << m_yearReleased << endl;
 }
 

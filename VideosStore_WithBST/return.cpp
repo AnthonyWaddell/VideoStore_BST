@@ -70,21 +70,21 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		// Get comedy attributes and return comedy film
 		getline(inputFile, movieTitle, ',');
 		inputFile >> releaseYear;
-		return_value = store->getComedyTree().returnComedy(movieTitle, releaseYear, store->getComedyTree().getRoot());
+		//return_value = store->getComedyTree().returnComedy(movieTitle, releaseYear, store->getComedyTree().getRoot());
 		//customerInfo->setHistory(action + " " + id + " D " + "F " + movieTitle + ", " + releaseYear)
 		break;
 	case 'D':
 		// Get drama attributes and return drama film
 		getline(inputFile, director, ',');
 		getline(inputFile, movieTitle, ',');
-		return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+		//return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
 		//customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",")	
 		break;
 	case 'C':
 		// Get classical attributes and return drama film
 		inputFile >> releaseMonth >> releaseYear >> firstNameMajor >> lastNameMajor;
-		return_value = store->getClassicalTree().returnClassical
-		(releaseMonth, releaseYear, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
+		//return_value = store->getClassicalTree().returnClassical
+		//(releaseMonth, releaseYear, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
 		//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
 		break;
 	default:

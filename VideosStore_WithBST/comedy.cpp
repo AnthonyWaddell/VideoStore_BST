@@ -10,9 +10,9 @@ Comedy::~Comedy()
 // --------------------------------------------------------------------------
 //	Display function to output stream
 // --------------------------------------------------------------------------
-void Comedy::display(ostream & outStream) const
+void Comedy::display() const
 {
-	outStream << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
+	cout << m_genreAbbrev << ", " << m_stock << ", " << m_director <<
 		", " << m_title << ", " << m_yearReleased << endl;
 }
 

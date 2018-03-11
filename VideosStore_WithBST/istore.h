@@ -83,7 +83,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  BinTree getComedyTree() { return comedyTree; }
+  const BinTree &getComedyTree() const; /*{ return comedyTree; }*/
 
   // ---------------------------- getDramaTree --------------------------------
   // Gets the binary tree of Drama inventory
@@ -91,7 +91,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  BinTree getDramaTree() { return dramaTree; }
+  const BinTree &getDramaTree() const;
 
   // ---------------------------- getClassicalTree ----------------------------
   // Gets the binary tree of Classical inventory
@@ -99,7 +99,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  BinTree getClassicalTree() { return classicalTree; }
+  const BinTree &getClassicalTree() const;
 
 protected: //changed this from private so we can access hashtable & linked list
   // ---------------------------- buildCustomers ------------------------------

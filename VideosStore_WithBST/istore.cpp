@@ -24,3 +24,27 @@ Hash IStore::getCustomerHashTablePtr()
 {
 	return m_customerHashPtr;
 }
+
+// --------------------------------------------------------------------------
+// accessor for comedyTree
+// --------------------------------------------------------------------------
+const BinTree & IStore::getComedyTree() const
+{
+	return comedyTree; 
+}
+
+// --------------------------------------------------------------------------
+// accessor for dramaTree
+// --------------------------------------------------------------------------
+const BinTree & IStore::getDramaTree() const
+{
+	return dramaTree;
+}
+
+// --------------------------------------------------------------------------
+// accessor for classicalTree
+// --------------------------------------------------------------------------
+const BinTree & IStore::getClassicalTree() const
+{
+	return classicalTree;
+}

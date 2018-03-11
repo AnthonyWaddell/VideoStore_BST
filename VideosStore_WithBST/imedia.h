@@ -32,7 +32,7 @@ public:
   // Postconditions: outStream contains media information.
   // Parameter: outStream - A out stream for the display.
   // --------------------------------------------------------------------------
-  virtual void display(std::ostream& outStream) const = 0;
+  virtual void display() const = 0;
 
   // ---------------------------- genDisplay ----------------------------------
   // Generates the display information into a string.
