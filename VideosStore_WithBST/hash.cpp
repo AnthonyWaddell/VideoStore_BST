@@ -47,8 +47,10 @@ bool Hash::insert(Customer* customer)
 		}
 		else
 		{
-			
-			cout << "collision at " << hashVal << endl;
+			while (hashTable[hashVal] == NULL)
+			{
+				//increment hashVal++ linear probing have to figure this out---------------
+			}
 		}
 		return true;
 	}

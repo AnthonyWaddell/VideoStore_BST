@@ -26,7 +26,7 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 	IAction *action_ptr = NULL;
 	char typeOfAction = ' ';
 	string invalidAction = "";
-	IStore *newStore = new OriginalStore();
+	//IStore *newStore = new OriginalStore();
 
 	while (true)
 	{
@@ -45,7 +45,7 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 		}
 		else
 		{
-			action_ptr->processAction(inputFileCommands, newStore);
+			action_ptr->processAction(inputFileCommands, this);
 		}
 
 	}

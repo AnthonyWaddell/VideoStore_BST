@@ -66,7 +66,7 @@ public:
   // Preconditions: None.
   // Postconditions: None.
   // Return: Returns Linked List object of the inventory list of IStore.
-  // --------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------remove this later
   //LinkedList* getInventoryLLPtr();
 
   // ---------------------------- getCustomerHashTablePtr ---------------------
@@ -77,8 +77,28 @@ public:
   // --------------------------------------------------------------------------
   Hash getCustomerHashTablePtr();
 
+  // ---------------------------- getComedyTree----------- --------------------
+  // Gets the binary tree of Comedy inventory
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Returns Hash Table containing store's customers.
+  // --------------------------------------------------------------------------
   BinTree getComedyTree() { return comedyTree; }
+
+  // ---------------------------- getDramaTree --------------------------------
+  // Gets the binary tree of Drama inventory
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Returns Hash Table containing store's customers.
+  // --------------------------------------------------------------------------
   BinTree getDramaTree() { return dramaTree; }
+
+  // ---------------------------- getClassicalTree ----------------------------
+  // Gets the binary tree of Classical inventory
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Returns Hash Table containing store's customers.
+  // --------------------------------------------------------------------------
   BinTree getClassicalTree() { return classicalTree; }
 
 protected: //changed this from private so we can access hashtable & linked list
@@ -100,7 +120,7 @@ protected: //changed this from private so we can access hashtable & linked list
   // --------------------------------------------------------------------------
   virtual void buildInventory(ifstream& inputFileInventory) = 0;
 
-  Hash m_customerHashPtr;      // A Hash Table that contains customers
+  Hash m_customerHashPtr;       // A Hash Table that contains customers
   BinTree comedyTree;			// A tree for comedy inventory
   BinTree dramaTree;			// A tree for drama inventory
   BinTree classicalTree;		// A tree for classical inventory
