@@ -156,12 +156,13 @@ bool BinTree::insertComedy(Node *& cur, DVD * datum)
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
+		inserted = true;
 	}
 
 	// Duplicate node found, do not insert
 	else if (*temp == *&cur->data)
 	{
-		return false;
+		inserted = false;
 	}
 	// Insert left for smaller data value
 	else if (*datum < &*cur->data)
@@ -173,6 +174,7 @@ bool BinTree::insertComedy(Node *& cur, DVD * datum)
 	{
 		insertComedy(cur->right_child, datum);
 	}
+	return inserted;
 }
 
 //-----------------------------------------------------------------------------
@@ -192,12 +194,13 @@ bool BinTree::insertDrama(Node *& cur, DVD * datum)
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
+		inserted = true;
 	}
 
 	// Duplicate node found, do not insert
 	else if (*temp == *&cur->data)
 	{
-		return false;
+		inserted = false;
 	}
 	// Insert left for smaller data value
 	else if (*datum < &*cur->data)
@@ -209,6 +212,7 @@ bool BinTree::insertDrama(Node *& cur, DVD * datum)
 	{
 		insertDrama(cur->right_child, datum);
 	}
+	return inserted;
 }
 
 //-----------------------------------------------------------------------------
@@ -227,12 +231,13 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 		cur->data = datum;
 		cur->left_child = NULL;
 		cur->right_child = NULL;
+		inserted = true;
 	}
 
 	// Duplicate node found, do not insert
 	else if (*temp == *&cur->data)
 	{
-		return false;
+		inserted = false;
 	}
 	// Insert left for smaller data value
 	else if (*datum < &*cur->data)
@@ -244,6 +249,7 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 	{
 		insertClassical(cur->right_child, datum);
 	}
+	return inserted;
 }
 
 //-----------------------------------------------------------------------------
@@ -305,7 +311,7 @@ bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 }
 
 //-----------------------------------------------------------------------------
-//  -	classics (‘C’) are sorted by Release date, then Major actor
+//  -	classics (Â‘CÂ’) are sorted by Release date, then Major actor
 //-----------------------------------------------------------------------------
 bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
 {
