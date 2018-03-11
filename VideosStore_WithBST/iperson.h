@@ -50,6 +50,14 @@ public:
   // --------------------------------------------------------------------------
   int getHashKey();
 
+  // ---------------------------- setHashKey ----------------------------------
+  // Sets IPerson's hash key.
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Void
+  // --------------------------------------------------------------------------
+  void setHashKey(int key);
+
   // ---------------------------- getFirstName --------------------------------
   // Gets IPerson's first name.
   // Preconditions: None.

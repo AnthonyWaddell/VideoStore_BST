@@ -40,17 +40,20 @@ bool Hash::insert(Customer* customer)
 	if (customer->getHashKey() >= 0)
 	{
 		int hashVal;
-		hashVal = customer->getHashKey() % TABLE_SIZE;
+		hashVal = customer->getID() % TABLE_SIZE;
 		if (hashTable[hashVal] == NULL)
 		{
 			hashTable[hashVal] = customer;
+			customer->setHashKey(hashVal);
 		}
 		else
 		{
 			while (hashTable[hashVal] == NULL)
 			{
-				//increment hashVal++ linear probing have to figure this out---------------
+				hashVal++;
 			}
+			hashTable[hashVal] = customer;
+			customer->setHashKey[hashVal];
 		}
 		return true;
 	}

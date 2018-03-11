@@ -40,6 +40,14 @@ public:
   // --------------------------------------------------------------------------
   virtual ~Customer();
 
+  // ---------------------------- getID ---------------------------------------
+  // Gets the customer's id number
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Returns the customer's id number
+  // --------------------------------------------------------------------------
+  int getID();
+
   // ---------------------------- getDVDHistory -------------------------------
   // Gets the stack containing customers borrow and return history. History in
   // order of most recent to oldest.
