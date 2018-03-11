@@ -39,6 +39,13 @@ public:
   // --------------------------------------------------------------------------
   virtual ~Hash();
 
+  // ---------------------------- ~generateHashKey ----------------------------
+  // Takes in a customer's ID and hashes it to generate a hashKey
+  // Preconditions: None.
+  // Postconditions: None.
+  // --------------------------------------------------------------------------
+  int generateHashKey(int id) const;
+
   // ---------------------------- insert --------------------------------------
   // Inserts a IPerson* into the hash table with linear closed hashing. Based 
   // off IPerson's hash key. In the case of customers, their hash key is their 

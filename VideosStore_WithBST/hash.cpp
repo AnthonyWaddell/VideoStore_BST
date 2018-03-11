@@ -32,15 +32,22 @@ Hash::~Hash()
 }
 
 // --------------------------------------------------------------------------
+// 
+// --------------------------------------------------------------------------
+int Hash::generateHashKey(int id) const
+{
+	int key = id % TABLE_SIZE;
+	return key;
+}
+
+// --------------------------------------------------------------------------
 // insert
 // --------------------------------------------------------------------------
 bool Hash::insert(Customer* customer)
 {	
-	//if(person->getHashKey() < TABLE_SIZE && person->getHashKey() > 0)
 	if (customer->getHashKey() >= 0)
 	{
-		int hashVal;
-		hashVal = customer->getID() % TABLE_SIZE;
+		int hashVal = generateHashKey(customer->getID());
 		if (hashTable[hashVal] == NULL)
 		{
 			hashTable[hashVal] = customer;
@@ -53,7 +60,7 @@ bool Hash::insert(Customer* customer)
 				hashVal++;
 			}
 			hashTable[hashVal] = customer;
-			customer->setHashKey[hashVal];
+			customer->setHashKey(hashVal);
 		}
 		return true;
 	}
