@@ -17,10 +17,9 @@ IStore::~IStore()
 	//delete m_customerHashPtr;
 }
 
-// --------------------------------------------------------------------------
-// accessor for m_customerHashPtr
-// --------------------------------------------------------------------------
-Hash IStore::getCustomerHashTablePtr()
+
+
+const Hash & IStore::getCustomerHashTablePtr() const
 {
 	return m_customerHashPtr;
 }

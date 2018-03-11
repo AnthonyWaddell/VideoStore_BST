@@ -75,7 +75,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  Hash getCustomerHashTablePtr();
+  const Hash &getCustomerHashTablePtr() const;
 
   // ---------------------------- getComedyTree----------- --------------------
   // Gets the binary tree of Comedy inventory

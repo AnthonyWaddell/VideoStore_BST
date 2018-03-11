@@ -16,6 +16,6 @@ bool Inventory::processAction(ifstream & inputFile, IStore * store)
 	cout << "Drama Movies:" << endl;
 	store->getDramaTree().print();
 	cout << "Classical Movies:" << endl;
-	store->getClassicalTree();
+	store->getClassicalTree().print();
 	return temp;
 }

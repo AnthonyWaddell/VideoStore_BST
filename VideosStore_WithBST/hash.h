@@ -61,7 +61,7 @@ public:
   // Return: Returns a IPerson* from the hash table or NULL to indicate IPerson
   // not found.
   // --------------------------------------------------------------------------
-  IPerson* retrieve(int key);
+  Customer* retrieve(int key) const;
 
 private:
   //IPerson** m_hashTable; // A hash table of IPerson pointers

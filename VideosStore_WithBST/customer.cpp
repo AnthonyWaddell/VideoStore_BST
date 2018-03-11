@@ -33,6 +33,7 @@ Customer::~Customer()
 // --------------------------------------------------------------------------
 stack<string> Customer::getDVDHistory()
 {
+
 	while (!m_dvdHistory.empty())
 	{
 	    m_dvdHistory.pop();

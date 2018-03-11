@@ -63,7 +63,7 @@ bool Hash::insert(Customer* customer)
 // --------------------------------------------------------------------------
 // retrieve
 // --------------------------------------------------------------------------
-IPerson* Hash::retrieve(int key)
+Customer* Hash::retrieve(int key) const
 {
 	if (hashTable[key] == NULL)
 	{
