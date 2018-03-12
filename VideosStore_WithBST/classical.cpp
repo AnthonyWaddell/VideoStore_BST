@@ -1,14 +1,35 @@
+//-----------------------------------------------------------------------------
+// File:	classical.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class creates an object of a type classical moive by reading
+// from the input file of creating a dvd inventory of the store. This is created 
+// from the dFactory class. Classical.cpp will read the rest of the line after 
+// getting the type of dvd which is C and assign it the correct values. 
+//-----------------------------------------------------------------------------
+
+
 #include "classical.h"
 
 // --------------------------------------------------------------------------
-//	Destructor
+// Function:	Classical::~Classical()
+// Title:	Destructor
+// Description: Destructor of a classical object
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 Classical::~Classical()
 {
 }
 
 // --------------------------------------------------------------------------
-//	Display function to output stream
+// Function:	void Classical::display()
+// Title:	display the movie attributes
+// Description: the method uses the iostream to ouput the attributes of the 
+//		classical movie
+// Parameters:	N/A
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::display() const
 {
@@ -19,7 +40,12 @@ void Classical::display() const
 }
 
 // --------------------------------------------------------------------------
-//	Display function, really not sure if this is what this is supposed to do?
+// Function:	void Classical::genDisplay(string & genDisplayString)
+// Title:	display of movie
+// Description: displays the entire movie line
+// Parameters:	string & genDisplayString
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::genDisplay(string & genDisplayString)
 {
@@ -43,7 +69,12 @@ void Classical::genDisplay(string & genDisplayString)
 }
 
 // --------------------------------------------------------------------------
-//	copy properties of itemPtr to *this
+// Function:	void Classical::genCopy(IItem * itemPtr)
+// Title:	generate a copy of the pointer item
+// Description: method creates a copyt of the current movie object.
+// Parameters:	IItem * itemPtr
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::genCopy(IItem * itemPtr)
 {
@@ -60,9 +91,14 @@ void Classical::genCopy(IItem * itemPtr)
 	}
 }
 
-
 // --------------------------------------------------------------------------
-//	Build a classical dvd
+// Function:	void Classical::buildDVD(char genre, ifstream & inputFileInventory)
+// Title:	createa DVD object
+// Description: method creates a dvd object of type classical by reading in the rest
+// of the input file. this will assign the movie's attributes along with how many in stock
+// Parameters:	char genre, ifstream & inputFileInventory
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::buildDVD(char genre, ifstream & inputFileInventory)
 {
@@ -87,7 +123,12 @@ void Classical::buildDVD(char genre, ifstream & inputFileInventory)
 }
 
 // --------------------------------------------------------------------------
-//	Overloaded boolean equality operator, not sure if we are checking anything other than title and director
+// Function:	bool Classical::operator==(IItem * itemPtr)
+// Title:	compare different classical movies
+// Description: compare classical movies 
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Classical::operator==(IItem * itemPtr)
 {
@@ -104,7 +145,12 @@ bool Classical::operator==(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	overloaded less than operator
+// Function:	bool Classical::operator<(IItem * itemPtr)
+// Title:	compare classical movies
+// Description: compare classical movies by relase date and major actor 
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Classical::operator<(IItem * itemPtr)
 {
@@ -142,7 +188,12 @@ bool Classical::operator<(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	overloaded greater than operator
+// Function:	bool Classical::operator>(IItem * itemPtr)
+// Title:	compare classical movies
+// Description: compare classical movies by relase date and major actor 
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Classical::operator>(IItem * itemPtr)
 {
@@ -180,7 +231,12 @@ bool Classical::operator>(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	accessor for m_monthReleased
+// Function:	int Classical::getMonthReleased()
+// Title:	Accessor for month release date
+// Description: Return the month the movie was released.
+// Parameters:	N/a
+// Returns:	int
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 int Classical::getMonthReleased()
 {
@@ -188,7 +244,12 @@ int Classical::getMonthReleased()
 }
 
 // --------------------------------------------------------------------------
-//	accessor for m_majorActorFirstName
+// Function:	string Classical::getMajorActorFirstName()
+// Title:	Accessor for major actor first name
+// Description: Return the string of the first name of major actor
+// Parameters:	N/A
+// Returns:	string
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 string Classical::getMajorActorFirstName()
 {
@@ -196,7 +257,12 @@ string Classical::getMajorActorFirstName()
 }
 
 // --------------------------------------------------------------------------
-//	accessor for m_majorActorLastName
+// Function:	string Classical::getMajorActorLastName()
+// Title:	Accessor for major actor last name
+// Description: Return the string of the last name of major actor
+// Parameters:	N/A
+// Returns:	string
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 string Classical::getMajorActorLastName()
 {
@@ -204,7 +270,12 @@ string Classical::getMajorActorLastName()
 }
 
 // --------------------------------------------------------------------------
-// mutator for m_monthReleased
+// Function:	void Classical::setMonthReleased(int month)
+// Title:	Mutator for release month
+// Description: sets the month for the movie
+// Parameters:	int month
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::setMonthReleased(int month)
 {
@@ -218,7 +289,12 @@ void Classical::setMonthReleased(int month)
 }
 
 // --------------------------------------------------------------------------
-//	mutator for m_majorActorFirstName
+// Function:	void Classical::setMajorActorFirstName(string firstName)
+// Title:	Mutator for major actor first name
+// Description: sets the first name of the major actor
+// Parameters:	string firstName
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::setMajorActorFirstName(string firstName)
 {
@@ -226,7 +302,12 @@ void Classical::setMajorActorFirstName(string firstName)
 }
 
 // --------------------------------------------------------------------------
-//	mutator for m_majorActorLastName
+// Function:	void Classical::setMajorActorLastName(string lastName)
+// Title:	Mutator for major actor last name
+// Description: sets the last name of the major actor
+// Parameters:	string lastName
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Classical::setMajorActorLastName(string lastName)
 {
