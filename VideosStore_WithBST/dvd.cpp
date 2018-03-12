@@ -1,21 +1,44 @@
+//-----------------------------------------------------------------------------
+// File:	dvd.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class is a parent class of type of dvds. It inherits from 
+// item. The DVD has a genre type and director. Classes drama, comedy, and 
+// classical inherit from DVD class
+//-----------------------------------------------------------------------------
+
 #include "dvd.h"
 
 // --------------------------------------------------------------------------
-// constructor
+// Function:	DVD::DVD()
+// Title:	Constructor
+// Description: Constructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 DVD::DVD()
 {
 }
 
 // --------------------------------------------------------------------------
-// destructor
+// Function:	DVD::~DVD()
+// Title:	Destructor
+// Description: Destructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 DVD::~DVD()
 {
 }
 
 // --------------------------------------------------------------------------
-// accessor for m_genreAbbrev;
+// Function:	char DVD::getGenre()
+// Title:	Accessor of genre
+// Description: gets the genre type
+// Parameters:	N/A
+// Returns:	char
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 char DVD::getGenre()
 {
@@ -23,7 +46,12 @@ char DVD::getGenre()
 }
 
 // --------------------------------------------------------------------------
-// accessor for m_director;
+// Function:	string DVD::getDirector()
+// Title:	accessor for m_director;
+// Description: gets the director name
+// Parameters:	N/A
+// Returns:	string
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 string DVD::getDirector()
 {
@@ -31,7 +59,12 @@ string DVD::getDirector()
 }
 
 // --------------------------------------------------------------------------
-// mutator for m_director
+// Function:	void DVD::setDirector(string director)
+// Title:	mutator for m_director
+// Description: sets the director name
+// Parameters:	string director
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void DVD::setDirector(string director)
 {
@@ -39,7 +72,12 @@ void DVD::setDirector(string director)
 }
 
 // --------------------------------------------------------------------------
-// mutator for m_genreAbbrev
+// Function:	void DVD::setGenreAbbrev(char genreAbbrev)
+// Title:	mutator for m_genreAbbrev
+// Description: sets the genre
+// Parameters:	char genreAbbrev
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void DVD::setGenreAbbrev(char genreAbbrev)
 {
@@ -49,6 +87,12 @@ void DVD::setGenreAbbrev(char genreAbbrev)
 
 // --------------------------------------------------------------------------
 // compares by genre for sorting/inserting purposes
+// Function:	int DVD::compareByGenre(char genre)
+// Title:	compares by genre for sorting/inserting purposes
+// Description: compare dvd genre and return 0 when match is found
+// Parameters:	char genre
+// Returns:	int
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 int DVD::compareByGenre(char genre)
 {
