@@ -27,13 +27,13 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 	char typeOfAction = ' ';
 	string invalidAction = "";
 
-	while (true)
+	while (inputFileCommands >> typeOfAction)
 	{
 		if (inputFileCommands.eof())
 		{
 			break;
 		}
-		inputFileCommands >> typeOfAction;
+		/*inputFileCommands >> typeOfAction;*/
 
 		action_ptr = AFactory::createAction(typeOfAction);
 		if (action_ptr == NULL)

@@ -47,7 +47,6 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	string s_releaseMonth;
 	string s_releaseYear;
 	int release_year;
-	int release_month;
 	int key;
 	bool return_value = false;
 
@@ -86,16 +85,14 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		// Get drama attributes and return drama film
 		getline(inputFile, director, ',');
 		getline(inputFile, movieTitle, ',');
-		return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+		//return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
 		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle);
 		break;
 	case 'C':
 		// Get classical attributes and return drama film
 		inputFile >> s_releaseMonth >> s_releaseYear >> firstNameMajor >> lastNameMajor;
-		release_year = stoi(s_releaseYear);
-		release_month = stoi(s_releaseMonth);
-		return_value = store->getClassicalTree().returnClassical
-		(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
+		//return_value = store->getClassicalTree().returnClassical
+		//(releaseMonth, releaseYear, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
 		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
 		break;
 	default:

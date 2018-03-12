@@ -35,7 +35,7 @@ BinTree & IStore::getComedyTree()
 // --------------------------------------------------------------------------
 // accessor for dramaTree
 // --------------------------------------------------------------------------
-const BinTree & IStore::getDramaTree() const
+BinTree & IStore::getDramaTree() 
 {
 	return dramaTree;
 }
@@ -43,7 +43,7 @@ const BinTree & IStore::getDramaTree() const
 // --------------------------------------------------------------------------
 // accessor for classicalTree
 // --------------------------------------------------------------------------
-const BinTree & IStore::getClassicalTree() const
+BinTree & IStore::getClassicalTree()
 {
 	return classicalTree;
 }
