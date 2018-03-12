@@ -23,7 +23,7 @@ void IItem::setStock(int stock)
 	int empty = 0;
 	if (stock >= empty)
 	{
-		m_stock = stock;
+		this->m_stock = stock;
 	}
 }
 

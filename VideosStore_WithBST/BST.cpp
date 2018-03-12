@@ -260,6 +260,10 @@ bool BinTree::returnComedy(string m_title, int m_year, Node *& cur) const
 	bool return_value = false;
 	int one_copy = 1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_title < cur->data->getTitle())
 	{
@@ -289,6 +293,10 @@ bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 	bool return_value = false;
 	int one_copy = 1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_director < cur->data->getDirector())
 	{
@@ -335,9 +343,9 @@ bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_
 		int currentStock = cur->data->getStock();
 		cur->data->setStock(currentStock + one_copy);
 		// Check for same movie, different actor
-		if (cur->left_child->data->getYearReleased() == m_year &&
-			static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
-			return_value = true;
+		//if (cur->left_child->data->getYearReleased() == m_year &&
+		//	static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
+		return_value = true;
 
 	}
 	// If it's greater than this nodes movie data;
@@ -357,10 +365,14 @@ bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
 	bool return_value = false;
 	int one_copy = -1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_title < cur->data->getTitle())
 	{
-		return returnComedy(m_title, m_year, cur->left_child);
+		return borrowComedy(m_title, m_year, cur->left_child);
 	}
 	// If it is this nodes movie data, increment the stock and return
 	else if (cur->data->getTitle() == m_title && cur->data->getYearReleased() == m_year)
@@ -379,7 +391,7 @@ bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
 	// If it's greater than this nodes movie data;
 	else
 	{
-		return returnComedy(m_title, m_year, cur->right_child);
+		return borrowComedy(m_title, m_year, cur->right_child);
 	}
 
 	return return_value;
@@ -393,10 +405,14 @@ bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
 	bool return_value = false;
 	int one_copy = -1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_director < cur->data->getDirector())
 	{
-		return returnDrama(m_director, m_title, cur->left_child);
+		return borrowDrama(m_director, m_title, cur->left_child);
 	}
 	// If it is this nodes movie data, increment the stock and return
 	else if (cur->data->getDirector() == m_director && cur->data->getTitle() == m_title)
@@ -415,7 +431,7 @@ bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
 	// If it's greater than this nodes movie data;
 	else
 	{
-		return returnDrama(m_director, m_title, cur->right_child);
+		return borrowDrama(m_director, m_title, cur->right_child);
 	}
 
 	return return_value;
@@ -429,10 +445,14 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 	bool return_value = false;
 	int one_copy = -1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_year < cur->data->getYearReleased())
 	{
-		return returnClassical(m_month, m_year, m_first, m_last, cur->left_child);
+		return borrowClassical(m_month, m_year, m_first, m_last, cur->left_child);
 	}
 	// If it is this nodes movie data, increment the stock and return
 	else if (cur->data->getYearReleased() == m_year && static_cast<Classical*>(cur->data)->getMonthReleased() == m_month)
@@ -444,16 +464,16 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 		{
 			cur->data->setStock(currentStock + one_copy);
 			// Check for same movie, different actor
-			if (cur->left_child->data->getYearReleased() == m_year &&
-				static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
-			{
-				cur->left_child->data->setStock(currentStock + one_copy);
-			}
-			if (cur->right_child->data->getYearReleased() == m_year &&
-				static_cast<Classical*>(cur->right_child->data)->getMonthReleased() == m_month)
-			{
-				cur->right_child->data->setStock(currentStock + one_copy);
-			}
+			//if (cur->left_child->data->getYearReleased() == m_year &&
+			//	static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
+			//{
+			//	cur->left_child->data->setStock(currentStock + one_copy);
+			//}
+			//if (cur->right_child->data->getYearReleased() == m_year &&
+			//	static_cast<Classical*>(cur->right_child->data)->getMonthReleased() == m_month)
+			//{
+			//	cur->right_child->data->setStock(currentStock + one_copy);
+			//}
 			return_value = true;
 		}
 		else
@@ -464,7 +484,7 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 	// If it's greater than this nodes movie data;
 	else
 	{
-		return returnClassical(m_month, m_year, m_first, m_last, cur->right_child);
+		return borrowClassical(m_month, m_year, m_first, m_last, cur->right_child);
 	}
 
 	return return_value;

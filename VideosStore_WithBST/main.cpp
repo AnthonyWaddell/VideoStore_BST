@@ -43,5 +43,5 @@ int main(void)
   delete store;
   store = NULL;
 
-  return 0;
+  return EXIT_SUCCESS;
 }

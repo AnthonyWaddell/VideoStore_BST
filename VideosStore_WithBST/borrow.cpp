@@ -44,9 +44,11 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	string director;
 	string firstNameMajor;
 	string lastNameMajor;
-	string releaseMonth;
-	string releaseYear;
-	bool returnValue = false;;
+	string s_releaseMonth;
+	string s_releaseYear;
+	int release_year;
+	int release_month;
+	bool return_value = false;;
 	bool contains = false;
 
 	//search store inventory to find movie based on movie type, binary tree
@@ -62,7 +64,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 		{
 			cout << "Incorrect Customer ID: " << id << endl;
 			getline(inputFile, badData); //get the rest of the  data of the wrong ID
-			returnValue = false;
+			return_value = false;
 		} 
 		else
 		{
@@ -77,12 +79,13 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				contains = store->getComedyTree().contains(movieTitle);
 				if (!contains)
 				{
-					return returnValue;
+					return return_value;
 				}
 				//search inventory of store if not found then break
-				inputFile >> releaseYear;
-				returnValue = true;
-				customerInfo->setHistory(action + " " + s_id + " " + mediaType +  " " + genre + " " + movieTitle + ", " + releaseYear);
+				inputFile >> s_releaseYear;
+				release_year = stoi(s_releaseYear);
+				return_value = store->getComedyTree().borrowComedy(movieTitle, release_year, store->getComedyTree().getRoot());
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType +  " " + genre + " " + movieTitle + ", " + s_releaseYear);
 			}
 			else if (genre == 'D' && mediaType == 'D')
 			{
@@ -92,28 +95,31 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				contains = store->getComedyTree().contains(movieTitle);
 				if (!contains)
 				{
-					return returnValue;
+					return return_value;
 				}
-				returnValue = true;
+				return_value = store->getDramaTree().borrowDrama(director, movieTitle, store->getDramaTree().getRoot());
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle + ",");
 			}
 			else if (genre == 'C' && mediaType == 'D')
 			{
-				inputFile >> releaseMonth;
-				inputFile >> releaseYear;
+				inputFile >> s_releaseMonth;
+				inputFile >> s_releaseYear;
 				inputFile >> firstNameMajor;
 				inputFile >> lastNameMajor;
-				returnValue = true;
+				release_month = stoi(s_releaseMonth);
+				release_year = stoi(s_releaseYear);
+				return_value = store->getClassicalTree().borrowClassical
+				(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
 				//search inventory of store if not found
-				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
 			}
 			else
 			{
 				cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;
 				getline(inputFile, badData);
-				returnValue = false;
+				return_value = false;
 
 			}
 		}
-	return returnValue; 
+	return return_value;
 }
