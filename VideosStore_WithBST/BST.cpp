@@ -39,11 +39,11 @@ BinTree::BinTree()
 // Returns:		N/A
 // History Log: 01/24/18 AW Completed Function
 //-----------------------------------------------------------------------------
-//BinTree::BinTree(const BinTree &other_tree)
-//{
-//	root = NULL;
-//	*this = other_tree;
-//}
+BinTree::BinTree(const BinTree &other_tree)
+{
+	root = NULL;
+	*this = other_tree;
+}
 
 //-----------------------------------------------------------------------------
 // Function:	BinTree::~BinTree(
@@ -385,5 +385,32 @@ void BinTree::inorder_Helper(Node *cur) const
 		cur->data->display();
 		// Move down right subtree
 		inorder_Helper(cur->right_child);
+	}
+}
+
+bool BinTree::contains(const string title)
+{
+	bool contains = false;
+	contains = contains_helper(root, title);
+	return contains;
+}
+
+bool BinTree::contains_helper(Node * cur, const string title)
+{
+	if (cur == NULL)
+	{
+		return false;
+	}
+	if (title < cur->data->getTitle())
+	{
+		return contains_helper(cur->left_child, title);
+	}
+	else if (title == cur->data->getTitle())
+	{
+		return true;
+	}
+	else
+	{
+		return contains_helper(cur->right_child, title);
 	}
 }

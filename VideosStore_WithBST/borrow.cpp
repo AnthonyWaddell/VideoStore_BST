@@ -46,7 +46,8 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	string lastNameMajor;
 	string releaseMonth;
 	string releaseYear;
-	bool returnValue;
+	bool returnValue = false;;
+	bool contains = false;
 
 	//search store inventory to find movie based on movie type, binary tree
 	//change customers history and inventory
@@ -67,14 +68,17 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 		{
 			//get customer valid account 
 			Customer* customerInfo = store->getCustomerHashTablePtr().retrieve(key);
-
-			inputFile >> mediaType; //no need to handle mediaType if its not D
-
+			inputFile >> mediaType;
 			inputFile >> genre;
 
 			if (genre == 'F' && mediaType == 'D')
 			{
 				getline(inputFile, movieTitle, ',');
+				contains = store->getComedyTree().contains(movieTitle);
+				if (!contains)
+				{
+					return returnValue;
+				}
 				//search inventory of store if not found then break
 				inputFile >> releaseYear;
 				returnValue = true;
@@ -100,7 +104,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 			}
 			else
 			{
-				cout << "Invalid Movie Code: " << mediaType << " " << genre << endl;
+				cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;
 				getline(inputFile, badData);
 				returnValue = false;
 

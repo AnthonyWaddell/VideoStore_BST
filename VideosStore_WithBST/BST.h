@@ -36,7 +36,7 @@ private:
 public:
 
 	BinTree();								// constructor
-	//BinTree(const BinTree &);				// copy constructor
+	BinTree(const BinTree &);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
 	Node*& getRoot() { return root; };
@@ -58,5 +58,7 @@ public:
 	//friend ostream & operator<<(ostream &sout, BinTree &tree);
 	void print() const;
 	void inorder_Helper(Node *cur) const;
+	bool contains(const string title);
+	bool contains_helper(Node *cur, const string title);
 };
 #endif

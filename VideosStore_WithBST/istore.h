@@ -83,7 +83,7 @@ public:
   // Postconditions: None.
   // Return: Returns Hash Table containing store's customers.
   // --------------------------------------------------------------------------
-  const BinTree &getComedyTree() const; /*{ return comedyTree; }*/
+  BinTree &getComedyTree(); /*{ return comedyTree; }*/
 
   // ---------------------------- getDramaTree --------------------------------
   // Gets the binary tree of Drama inventory

@@ -31,7 +31,7 @@ IAction * AFactory::createAction(char actionType)
 		m_action = new Inventory();
 		break;
 	default:
-		cout << "Invalid Action:" << actionType << endl;
+		cout << "Invalid Action: " << actionType << endl;
 		break;
 	}
 	return m_action;

@@ -34,7 +34,7 @@ Return::~Return()
 // --------------------------------------------------------------------------
 bool Return::processAction(std::ifstream& inputFile, IStore* store)
 {
-	char action = ' ';
+	string action = "R";
 	int id;
 	char mediaType = ' ';
 	char genre = ' ';
@@ -43,8 +43,9 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	string director;
 	string firstNameMajor;
 	string lastNameMajor;
-	int releaseMonth;
-	int releaseYear;
+	string s_id;
+	string releaseMonth;
+	string releaseYear;
 	int key;
 	bool return_value = false;
 
@@ -55,6 +56,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	//inputFile >> action; don't know if we need this, keeping for now in case we do
 	inputFile >> id;
 	key = store->getCustomerHashTablePtr().generateHashKey(id);
+	s_id = to_string(id);
 	if (store->getCustomerHashTablePtr().retrieve(key) == NULL)
 	{
 		getline(inputFile, badData);
@@ -77,24 +79,24 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		// comedyTree.insertComedy(comedyTree.getRoot(), dvd_ptr);
 		 //const Node*& temp = store->getComedyTree().getRoot();
 		//return_value = store->getComedyTree().returnComedy(movieTitle, releaseYear, store->getComedyTree().getRoot());
-		//customerInfo->setHistory(action + " " + id + " D " + "F " + movieTitle + ", " + releaseYear)
+		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + movieTitle + ", " + releaseYear);
 		break;
 	case 'D':
 		// Get drama attributes and return drama film
 		getline(inputFile, director, ',');
 		getline(inputFile, movieTitle, ',');
-	/*	return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
-		customerInfo->setHistory(action + " " + id + " D " + "D " + director + ", " + movieTitle + ",")	
-		break;*/
+		//return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle);
+		break;
 	case 'C':
 		// Get classical attributes and return drama film
 		inputFile >> releaseMonth >> releaseYear >> firstNameMajor >> lastNameMajor;
 		//return_value = store->getClassicalTree().returnClassical
 		//(releaseMonth, releaseYear, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
-		//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
+		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lastNameMajor);
 		break;
 	default:
-		cout << "Invalid Movie Code: " << mediaType << genre << endl;
+		cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;
 		getline(inputFile, badData);
 		break;
 	}

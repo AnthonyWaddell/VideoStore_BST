@@ -27,7 +27,7 @@ const Hash & IStore::getCustomerHashTablePtr() const
 // --------------------------------------------------------------------------
 // accessor for comedyTree
 // --------------------------------------------------------------------------
-const BinTree & IStore::getComedyTree() const
+BinTree & IStore::getComedyTree() 
 {
 	return comedyTree; 
 }
