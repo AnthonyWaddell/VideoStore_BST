@@ -89,6 +89,11 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				getline(inputFile, director, ',');
 				//search inventory of store if not found then break
 				getline(inputFile, movieTitle, ',');
+				contains = store->getComedyTree().contains(movieTitle);
+				if (!contains)
+				{
+					return returnValue;
+				}
 				returnValue = true;
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle + ",");
 			}

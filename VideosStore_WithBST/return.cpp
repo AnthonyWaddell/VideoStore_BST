@@ -96,7 +96,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		release_month = stoi(s_releaseMonth);
 		return_value = store->getClassicalTree().returnClassical
 		(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
-		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre +  " " + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
 		break;
 	default:
 		cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;

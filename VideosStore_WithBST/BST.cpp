@@ -316,9 +316,12 @@ bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
 {
 	bool return_value = false;
-
 	int one_copy = 1;
 
+	if (cur == NULL)
+	{
+		return false;
+	}
 	// If it's less than this nodes movie data
 	if (m_year < cur->data->getYearReleased())
 	{
@@ -349,6 +352,127 @@ bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_
 //-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
+bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
+{
+	bool return_value = false;
+	int one_copy = -1;
+
+	// If it's less than this nodes movie data
+	if (m_title < cur->data->getTitle())
+	{
+		return returnComedy(m_title, m_year, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getTitle() == m_title && cur->data->getYearReleased() == m_year)
+	{
+		int currentStock = cur->data->getStock();
+		if (cur->data->getStock() >= 1)
+		{
+			cur->data->setStock(currentStock + one_copy);
+			return_value = true;
+		}
+		else
+		{
+			cout << "Error: Out of stock, please check back soon." << endl;
+		}
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnComedy(m_title, m_year, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
+{
+	bool return_value = false;
+	int one_copy = -1;
+
+	// If it's less than this nodes movie data
+	if (m_director < cur->data->getDirector())
+	{
+		return returnDrama(m_director, m_title, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getDirector() == m_director && cur->data->getTitle() == m_title)
+	{
+		int currentStock = cur->data->getStock();
+		if (cur->data->getStock() >= 1)
+		{
+			cur->data->setStock(currentStock + one_copy);
+			return_value = true;
+		}
+		else
+		{
+			cout << "Error: Out of stock, please check back soon." << endl;
+		}
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnDrama(m_director, m_title, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
+bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
+{
+	bool return_value = false;
+	int one_copy = -1;
+
+	// If it's less than this nodes movie data
+	if (m_year < cur->data->getYearReleased())
+	{
+		return returnClassical(m_month, m_year, m_first, m_last, cur->left_child);
+	}
+	// If it is this nodes movie data, increment the stock and return
+	else if (cur->data->getYearReleased() == m_year && static_cast<Classical*>(cur->data)->getMonthReleased() == m_month)
+	{
+
+		// This should probably call this function again on the left & right child of this node?
+		int currentStock = cur->data->getStock();
+		if (cur->data->getStock() >= 1)
+		{
+			cur->data->setStock(currentStock + one_copy);
+			// Check for same movie, different actor
+			if (cur->left_child->data->getYearReleased() == m_year &&
+				static_cast<Classical*>(cur->left_child->data)->getMonthReleased() == m_month)
+			{
+				cur->left_child->data->setStock(currentStock + one_copy);
+			}
+			if (cur->right_child->data->getYearReleased() == m_year &&
+				static_cast<Classical*>(cur->right_child->data)->getMonthReleased() == m_month)
+			{
+				cur->right_child->data->setStock(currentStock + one_copy);
+			}
+			return_value = true;
+		}
+		else
+		{
+			cout << "Error: Out of stock, please check back soon." << endl;
+		}
+	}
+	// If it's greater than this nodes movie data;
+	else
+	{
+		return returnClassical(m_month, m_year, m_first, m_last, cur->right_child);
+	}
+
+	return return_value;
+}
+
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
 //ostream &operator<<(ostream &sout, BinTree &tree)
 //{
 //	tree.inorder_Helper(tree.root);
@@ -362,14 +486,7 @@ void BinTree::print() const
 }
 
 //-----------------------------------------------------------------------------
-// Function:	void BinTree::inorder_Helper(Node *cur) const
-// Title:		Helper function for overloaded output operator of BST class
-// Description: Prints out in order traversal of BST object
-// Programmer:	Anthony Waddell
 //
-// Parameters:	Node *cur; the cureent node
-// Returns:		void
-// History Log: 01/24/18 AW Completed Function
 //-----------------------------------------------------------------------------
 void BinTree::inorder_Helper(Node *cur) const
 {
@@ -388,6 +505,9 @@ void BinTree::inorder_Helper(Node *cur) const
 	}
 }
 
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
 bool BinTree::contains(const string title)
 {
 	bool contains = false;
@@ -395,6 +515,9 @@ bool BinTree::contains(const string title)
 	return contains;
 }
 
+//-----------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------
 bool BinTree::contains_helper(Node * cur, const string title)
 {
 	if (cur == NULL)

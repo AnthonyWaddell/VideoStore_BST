@@ -54,8 +54,11 @@ public:
 	bool returnDrama(string m_director, string m_title, Node *&cur) const;
 	bool returnClassical(int m_month, int m_year, string m_first, string m_last, Node *&cur) const;
 
-	// Overloaded output operator and helper function
-	//friend ostream & operator<<(ostream &sout, BinTree &tree);
+	// Borrow functions
+	bool borrowComedy(string m_title, int m_year, Node *&cur) const;
+	bool borrowDrama(string m_director, string m_title, Node *&cur) const;
+	bool borrowClassical(int m_month, int m_year, string m_first, string m_last, Node *&cur) const;
+
 	void print() const;
 	void inorder_Helper(Node *cur) const;
 	bool contains(const string title);
