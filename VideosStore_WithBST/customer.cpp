@@ -42,7 +42,7 @@ stack<string> Customer::getDVDHistory()
 	int counter = 1;
 	while (!m_dvdHistory.empty())
 	{	
-		cout << counter << ". ";
+		cout << counter << ". " << m_dvdHistory.top();
 	    m_dvdHistory.pop();
 	    cout << "\n"; // go to next line
 		counter++;

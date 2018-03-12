@@ -32,7 +32,7 @@ int main(void)
     std::cout << "File could not be opened: " << commandFile << std::endl;
     return 1;
   }
-
+  cout << " still need to work on duplicate classics inventory and update inventory on return and borrow and the customer stack history" << endl;
 
   // Builds and run a particular instance of a store
   IStore* store;

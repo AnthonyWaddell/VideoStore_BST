@@ -38,7 +38,7 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 		action_ptr = AFactory::createAction(typeOfAction);
 		if (action_ptr == NULL)
 		{
-			cout << "Invalid Action" << endl;
+			//cout << "Invalid Action" << endl;
 			getline(inputFileCommands, invalidAction);
 			continue;
 		}

@@ -94,7 +94,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		//customerInfo->setHistory(action + " " + id + " D " + "C " + releaseMonth + " " + releaseYear + " " + firstNameMajor + " " + lasNameMajor)
 		break;
 	default:
-		cout << "Invalid Movie Code: " << genre << endl;
+		cout << "Invalid Movie Code: " << mediaType << genre << endl;
 		getline(inputFile, badData);
 		break;
 	}
