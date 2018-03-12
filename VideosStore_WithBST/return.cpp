@@ -1,3 +1,12 @@
+//-----------------------------------------------------------------------------
+// File:	return.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class is based off an action from the command file.
+// The processAction method sets the history to the  customer doing the 
+// returning of the dvd. It makes validation checks to see that the
+// chars in a certain place are correct identifies.
+//----------------------------------------------------------------------
+
 #include "return.h"
 #include <iostream>
 #include "originalstore.h"
@@ -10,9 +19,12 @@ using namespace std;
 
 
 // ---------------------------- ~Return -------------------------------------
-// An empty virtual destructor for extensibility.
-// Preconditions: None.
-// Postconditions: None.
+// Function:	Return::~Return()
+// Title:	Destructor
+// Description: Destructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 Return::~Return()
 {
@@ -20,17 +32,18 @@ Return::~Return()
 }
 
 // ---------------------------- processAction -------------------------------
-// Processes the return action reading what to do from a input file.
+// Function:	bool Return::processAction(std::ifstream& inputFile, IStore* store)
+// Title:	process the return action
+// Description: rocesses the return action reading what to do from a input file.
 // Preconditions: A valid IStore object. Correctly formatted input file line.
 // Postconditions: Input file ifstream will be at the end of the line. IStore
 // will have added movie to its inventory and removed from the customer's
 // inventory if a valid movie and valid customer; otherwise, error message
 // is printed to screen. Also, the return, if valid, will be added to
 // customer's history.
-// Parameter: inputFile - A input file with lines of properly formatted
-// commands.
-// store - An IStore object.
-// Return: Returns true if return was successful, and false otherwise.
+// Parameters:	inputFile - A input file with lines of properly formatted commands.
+// Returns:	Returns true if return was successful, and false otherwise.
+// History Log: 03/14/18 AW Completed Function 
 // --------------------------------------------------------------------------
 bool Return::processAction(std::ifstream& inputFile, IStore* store)
 {
