@@ -1,3 +1,11 @@
+//-----------------------------------------------------------------------------
+// File:	main.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The main tests all methods in the video library but creating
+// a database of customers and inventory of a store. Then it runs the store by
+// using the commands from the input files
+//-----------------------------------------------------------------------------
+
 #include "originalstore.h"
 #include <fstream>
 #include <iostream>
