@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+// File:	borrow.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class is used to check the inventory of the store and adds 
+// to the customer's history the movie that it will borrow. It will read from 
+// the command file by reading each word separated by a space. The checks will
+// be to make sure the customer ID is valid in the hashtable, check that the 
+// item type is D, movie type is valid, and title to be valid. If all these are not valid
+// then the movie is not added to the cutomer's history.
+//-----------------------------------------------------------------------------
+
 #include <iostream>
 #include "borrow.h"
 #include "originalstore.h"
@@ -8,11 +19,13 @@
 
 using namespace std;
 
-
 // ---------------------------- ~Borrow -------------------------------------
-// An empty virtual destructor for extensibility.
-// Preconditions: None.
-// Postconditions: None.
+// Function:	Borrow::~Borrow())
+// Title:	Destructor
+// Description: Destructor for borrowed movies
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 Borrow::~Borrow()
 {
@@ -20,9 +33,10 @@ Borrow::~Borrow()
 }
 
 // ---------------------------- processAction -------------------------------
-// Processes the borrow action reading what to do from a input file.
-// Preconditions: A valid IStore object. Correctly formatted input file line.
-// Postconditions: Input file ifstream will be at the end of the line. IStore
+// Function: bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
+// Title:  Processes the borrow action reading what to do from a input file.
+// Description: A valid IStore object. Correctly formatted input file line.
+// Input file ifstream will be at the end of the line. IStore
 // will have removed movie from its inventory and added to the customer's
 // inventory if a valid movie and valid customer; otherwise, error message
 // is printed to screen. Also, the borrow, if valid, will be added to
@@ -34,21 +48,21 @@ Borrow::~Borrow()
 // --------------------------------------------------------------------------
 bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 {
-	int id;
-	int key;
-	string action = "B";
-	char mediaType = ' ';
-	char genre = ' ';
-	string badData;
+	int id; // customer id
+	int key; // hashtable key
+	string action = "B"; //action to be done
+	char mediaType = ' '; //D for DVD, anything else is invalid
+	char genre = ' '; //type of DVD
+	string badData; //take in rest of line if above values are invalid
 	string movieTitle;
 	string director;
-	string firstNameMajor;
-	string lastNameMajor;
-	string s_releaseMonth;
-	string s_releaseYear;
-	int release_year;
+	string firstNameMajor; //major actor or actress first name
+	string lastNameMajor; //major actor or actress las name
+	string s_releaseMonth; //classical movie release month
+	string s_releaseYear; //movie release year
+	int release_year; 
 	int release_month;
-	bool return_value = false;;
+	bool return_value = false;//checks if the entire command is valid
 	bool contains = false;
 
 	//search store inventory to find movie based on movie type, binary tree
