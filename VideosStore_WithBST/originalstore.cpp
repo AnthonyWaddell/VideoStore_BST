@@ -1,16 +1,36 @@
+//-----------------------------------------------------------------------------
+// File:	originalstore.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class creates the actual store that we will use to hold the
+// video store library. The class can buildStore by reading from a file with a
+// set data. The class builds the customers table, the inventory and reads
+// the commands from the file. This class reads all 3 files to make the store run.
+//-----------------------------------------------------------------------------
+
+
 #include "originalstore.h"
 #include <string.h>
 
 using namespace std;
 // --------------------------------------------------------------------------
-//
+// Function:	OriginalStore::~OriginalStore()
+// Title:	Destructor
+// Description: Destructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 OriginalStore::~OriginalStore()
 {
 }
 
 // --------------------------------------------------------------------------
-//
+// Function:	void OriginalStore::buildStore(std::ifstream & inputFileCustomers, std::ifstream & inputFileInventory)
+// Title:	build the store database
+// Description: reads all 3 files to build inventory and run commands.
+// Parameters:	std::ifstream & inputFileCustomers, std::ifstream & inputFileInventory
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void OriginalStore::buildStore(std::ifstream & inputFileCustomers, std::ifstream & inputFileInventory)
 {
@@ -19,7 +39,13 @@ void OriginalStore::buildStore(std::ifstream & inputFileCustomers, std::ifstream
 }
 
 // --------------------------------------------------------------------------
-//
+// Function:	void OriginalStore::runStore(std::ifstream & inputFileCommands)
+// Title:	run the store
+// Description: runs the store by reading the commands of all the customers who
+// borrow and return dvd types
+// Parameters:	std::ifstream & inputFileCommands
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void OriginalStore::runStore(std::ifstream & inputFileCommands)
 {
@@ -50,7 +76,13 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 }
 
 // --------------------------------------------------------------------------
-//
+// Function:	void OriginalStore::buildCustomers(std::ifstream & inputFileCustomers)
+// Title:	build the customer database
+// Description: builds the customers using their ID and adding their info
+// into a hashtable of size 2003.
+// Parameters:	std::ifstream & inputFileCustomers
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void OriginalStore::buildCustomers(std::ifstream & inputFileCustomers)
 {
@@ -67,7 +99,13 @@ void OriginalStore::buildCustomers(std::ifstream & inputFileCustomers)
 }
 
 // --------------------------------------------------------------------------
-//
+// Function:	void OriginalStore::buildInventory(std::ifstream & inputFileInventory)
+// Title:	build store inventory
+// Description: builds the store's inventory by reading from the inputFile
+// Parameters:	std::ifstream & inputFileInventory. It uses a factory when
+// reading the file to see what kind of DVD it is.
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void OriginalStore::buildInventory(std::ifstream & inputFileInventory)
 {
