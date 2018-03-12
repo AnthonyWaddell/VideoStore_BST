@@ -1,14 +1,32 @@
+//-----------------------------------------------------------------------------
+// File:	drama.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class creates a DVD of movie type drama. It reads the rest of 
+// the line from the input file once it has been identified as a type drama. Other
+// functions are used such as displaying the all the attributes of the build dvd
+//-----------------------------------------------------------------------------
+
 #include "drama.h"
 
 // --------------------------------------------------------------------------
-//	Destructor
+// Function:	Drama::~Drama()
+// Title:	Destructor
+// Description: Destructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 Drama::~Drama()
 {
 }
 
 // --------------------------------------------------------------------------
-//	display object information to designated output stream
+// Function:	void Drama::display()
+// Title:	Display the dvd
+// Description: print out the attributes of the movie
+// Parameters:	N/A
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Drama::display() const
 {
@@ -18,6 +36,12 @@ void Drama::display() const
 
 // --------------------------------------------------------------------------
 //	create string with relevant properties of this dvd
+// Function:	void Drama::genDisplay(string & genDisplayString)
+// Title:	relevant properties of dvd
+// Description: 
+// Parameters:	string & genDisplayString
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Drama::genDisplay(string & genDisplayString)
 {
@@ -35,14 +59,18 @@ void Drama::genDisplay(string & genDisplayString)
 }
 
 // --------------------------------------------------------------------------
-//	copy properties of itemPtr to *this
+// Function:	void Drama::genCopy(IItem * itemPtr)
+// Title:	generate a copy
+// Description: this creates a copy of the dvd movie drama type.
+// Parameters:	IItem * itemPtr
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Drama::genCopy(IItem * itemPtr)
 {
 	Drama *temp = static_cast<Drama*>(itemPtr);
 	if (temp->getGenre() == 'D')
 	{
-
 		this->m_stock = temp->m_stock;
 		this->m_director = temp->m_director;
 		this->m_title = temp->m_title;
@@ -51,7 +79,13 @@ void Drama::genCopy(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	Fill relevant properties of a Drama DVD with information from input file
+// Function:	void Drama::buildDVD(char genre, ifstream & inputFileInventory)
+// Title:	Build Drama DVD
+// Description: createa drama movie type by assigning the correct attribute values
+// based on what is read from the input file.
+// Parameters:	char genre, ifstream & inputFileInventory
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void Drama::buildDVD(char genre, ifstream & inputFileInventory)
 {
@@ -70,7 +104,12 @@ void Drama::buildDVD(char genre, ifstream & inputFileInventory)
 }
 
 // --------------------------------------------------------------------------
-//	Overloaded boolean equality operator, not sure if we are checking anything other than title and director
+// Function:	bool Drama::operator==(IItem * itemPtr)
+// Title:	overload equality operator
+// Description: comapres for equality of the movie type between two drama objects
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Drama::operator==(IItem * itemPtr)
 {
@@ -84,7 +123,12 @@ bool Drama::operator==(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	overloaded less than operator
+// Function:	bool Drama::operator<(IItem * itemPtr)
+// Title:	overload less than operator
+// Description: comapres for less than of the movie type between two drama objects
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Drama::operator<(IItem * itemPtr)
 {
@@ -106,7 +150,12 @@ bool Drama::operator<(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-//	overloaded greater than operator
+// Function:	bool Drama::operator<(IItem * itemPtr)
+// Title:	overload greater than operator
+// Description: comapres for greater than of the movie type between two drama objects
+// Parameters:	IItem * itemPtr
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 bool Drama::operator>(IItem * itemPtr)
 {
