@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // File:		BinTree.cpp
-// Programmer:	Anthony Waddell
+// Programmer:	Anthony Waddell, Christopher Salazar
 // Resources:
 //		for getHeight https://www.geeksforgeeks.org/get-level-of-a-node-in-a-binary-tree/
 //			and https://stackoverflow.com/questions/2597637/finding-height-in-binary-search-tree
@@ -14,14 +14,11 @@ using namespace std;
 
 //-----------------------------------------------------------------------------
 // Function:	BinTree::BinTree()
-// Title:		Constructor
+// Title:	Constructor
 // Description: Constructs an empty BST object and sets root equal to NULL
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	N/A
-// Returns:		N/A
-// History Log: 01/24/18 AW Completed Function
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 BinTree::BinTree()
 {
@@ -30,14 +27,11 @@ BinTree::BinTree()
 
 //-----------------------------------------------------------------------------
 // Function:	BinTree::BinTree(const BinTree & other_tree)
-// Title:		Copy Constructor
+// Title:	Copy Constructor
 // Description: Constructs an empty BST object and sets equal to parameter tree
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	const BinTree & other_tree; the other tree 
-// Returns:		N/A
-// History Log: 01/24/18 AW Completed Function
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 BinTree::BinTree(const BinTree &other_tree)
 {
@@ -47,13 +41,10 @@ BinTree::BinTree(const BinTree &other_tree)
 
 //-----------------------------------------------------------------------------
 // Function:	BinTree::~BinTree(
-// Title:		Destructor
+// Title:	Destructor
 // Description: Destructor for BST class object
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	N/A
-// Returns:		N/A
+// Returns:	N/A
 // History Log: 01/24/18 AW Completed Function
 //-----------------------------------------------------------------------------
 BinTree::~BinTree()
@@ -63,14 +54,11 @@ BinTree::~BinTree()
 
 //-----------------------------------------------------------------------------
 // Function:	bool BinTree::isEmpty() const
-// Title:		boolean empty function
+// Title:	boolean empty function
 // Description: Tests to see if BST object is empty
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	N/A
-// Returns:		true if BST object is empty; false if not
-// History Log: 01/24/18 AW Completed Function
+// Returns:	true if BST object is empty; false if not
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::isEmpty() const
 {
@@ -88,18 +76,13 @@ bool BinTree::isEmpty() const
 	return empty;
 }
 
-
-
 //-----------------------------------------------------------------------------
 // Function:	bool BinTree::isEmpty() const
-// Title:		boolean empty function
+// Title:	boolean empty function
 // Description: Tests to see if BST object is empty
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	N/A
-// Returns:		void
-// History Log: 01/24/18 AW Completed Function
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 void BinTree::makeEmpty()
 {
@@ -108,15 +91,12 @@ void BinTree::makeEmpty()
 
 //-----------------------------------------------------------------------------
 // Function:	void BinTree::makeEmpty_Helper(Node *&cur)
-// Title:		Helper function for makeEmpty
+// Title:	Helper function for makeEmpty
 // Description: Clears data pointed to by BST nodes and then deletes node until
 //					BST is empty in post order traversal
-//
-// Programmer:	Anthony Waddell
-//
 // Parameters:	Node *&cur; the current node to delete
-// Returns:		void
-// History Log: 01/24/18 AW Completed Function
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 void BinTree::makeEmpty_Helper(Node *&cur)
 {
@@ -139,13 +119,17 @@ void BinTree::makeEmpty_Helper(Node *&cur)
 	cur = NULL;
 }
 
-
 //-----------------------------------------------------------------------------
-// insert comedy item into comedy tree
+// Function:	bool BinTree::insertComedy(Node *& cur, DVD * datum)
+// Title:	insert method for comedy tree
+// Description: insert comedy item (DVD) into comedy tree
+// Parameters:	Node *& cur, DVD * datum
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::insertComedy(Node *& cur, DVD * datum)
 {
-	bool inserted = false;
+	bool inserted = false; //track if item has been inserted or not
 	Comedy *temp = static_cast<Comedy*>(datum);
 
 	// Insert when empty spot is found
@@ -178,11 +162,16 @@ bool BinTree::insertComedy(Node *& cur, DVD * datum)
 }
 
 //-----------------------------------------------------------------------------
-// insert drama into drama tree
+// Function:	bool BinTree::insertDrama(Node *& cur, DVD * datum)
+// Title:	insert method for drama tree
+// Description: insert drama item (DVD) into drama tree
+// Parameters:	Node *& cur, DVD * datum
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::insertDrama(Node *& cur, DVD * datum)
 {
-	bool inserted = false;
+	bool inserted = false; //track if item has been inserted or not
 	int position = 0;
 	Drama *temp = static_cast<Drama*>(datum);
 
@@ -216,11 +205,16 @@ bool BinTree::insertDrama(Node *& cur, DVD * datum)
 }
 
 //-----------------------------------------------------------------------------
-// insert classical into classical tree
+// Function:	bool BinTree::insertClassical(Node *& cur, DVD * datum)
+// Title:	insert method for classical tree
+// Description: insert classical item (DVD) into classical tree
+// Parameters:	Node *& cur, DVD * datum
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::insertClassical(Node *& cur, DVD * datum)
 {
-	bool inserted = false;
+	bool inserted = false; //track if item has been inserted or not
 	int position = 0;
 	Classical *temp = static_cast<Classical*>(datum);
 
@@ -253,7 +247,12 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::returnComedy(string m_title, int m_year, Node *& cur)
+// Title:	return movie of comedy inventory
+// Description: will check comedy tree to return movie and increase the stock of movie if found
+// Parameters:	string m_title, int m_year, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::returnComedy(string m_title, int m_year, Node *& cur) const
 {
@@ -286,7 +285,12 @@ bool BinTree::returnComedy(string m_title, int m_year, Node *& cur) const
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::returnDrama(string m_title, int m_year, Node *& cur)
+// Title:	return movie from drama inventory
+// Description: will check drama tree to return movie and increase the stock of movie if found
+// Parameters:	string m_title, int m_year, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 {
@@ -319,7 +323,13 @@ bool BinTree::returnDrama(string m_director, string m_title, Node *& cur) const
 }
 
 //-----------------------------------------------------------------------------
-//  -	classics (C) are sorted by Release date, then Major actor
+// Function:	bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur)
+// Title:	return movie from classical inventory
+// Description: will check classical tree to return movie and increase the stock of movie if found
+// but classical will check by release data, then major actor.
+// Parameters:	int m_month, int m_year, string m_first, string m_last, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
 {
@@ -358,7 +368,12 @@ bool BinTree::returnClassical(int m_month, int m_year, string m_first, string m_
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur)
+// Title:	borrow movie from comedy inventory 
+// Description: check the comedy inventory tree and decrement stock of movie by one
+// Parameters:	string m_title, int m_year, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
 {
@@ -374,7 +389,7 @@ bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
 	{
 		return borrowComedy(m_title, m_year, cur->left_child);
 	}
-	// If it is this nodes movie data, increment the stock and return
+	// If it is this nodes movie data, decrement the stock and return
 	else if (cur->data->getTitle() == m_title && cur->data->getYearReleased() == m_year)
 	{
 		int currentStock = cur->data->getStock();
@@ -398,7 +413,12 @@ bool BinTree::borrowComedy(string m_title, int m_year, Node *& cur) const
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::borrowDrama(string m_title, int m_year, Node *& cur)
+// Title:	borrow movie from drama inventory 
+// Description: check the drama inventory tree and decrement stock of movie by one
+// Parameters:	string m_title, int m_year, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
 {
@@ -414,7 +434,7 @@ bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
 	{
 		return borrowDrama(m_director, m_title, cur->left_child);
 	}
-	// If it is this nodes movie data, increment the stock and return
+	// If it is this nodes movie data, decrement the stock and return
 	else if (cur->data->getDirector() == m_director && cur->data->getTitle() == m_title)
 	{
 		int currentStock = cur->data->getStock();
@@ -438,7 +458,12 @@ bool BinTree::borrowDrama(string m_director, string m_title, Node *& cur) const
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::borrowDrama(int m_month, int m_year, string m_first, string m_last, Node *& cur)
+// Title:	borrow movie from classical inventory 
+// Description: check the classcial inventory tree and decrement stock of movie by one
+// Parameters:	int m_month, int m_year, string m_first, string m_last, Node *& cur
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_last, Node *& cur) const
 {
@@ -454,7 +479,7 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 	{
 		return borrowClassical(m_month, m_year, m_first, m_last, cur->left_child);
 	}
-	// If it is this nodes movie data, increment the stock and return
+	// If it is this nodes movie data, decrement the stock and return
 	else if (cur->data->getYearReleased() == m_year && static_cast<Classical*>(cur->data)->getMonthReleased() == m_month)
 	{
 
@@ -500,13 +525,26 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 //	return sout;
 //}
 
+//-----------------------------------------------------------------------------
+// Function:	void BinTree::print()
+// Title:	display the tree
+// Description: uses the inorder_Helper function which displays every node in a tree
+// Parameters:	N/A
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
+//-----------------------------------------------------------------------------
 void BinTree::print() const
 {
 	inorder_Helper(root);
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	void BinTree::inorder_Helper(Node *cur)
+// Title:	helps display data in tree
+// Description: this is a helper function tahat recurses through the tree to display the data
+// Parameters:	Node *cur
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 void BinTree::inorder_Helper(Node *cur) const
 {
@@ -526,7 +564,13 @@ void BinTree::inorder_Helper(Node *cur) const
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::contains(const string title)
+// Title:	check tree if it has a title
+// Description: method calls a helper function that checks to see if a node contains
+//		a specific movie title
+// Parameters:	const string title
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::contains(const string title)
 {
@@ -536,7 +580,13 @@ bool BinTree::contains(const string title)
 }
 
 //-----------------------------------------------------------------------------
-//
+// Function:	bool BinTree::contains_helper(Node * cur, const string title)
+// Title:	helper method to check movie title
+// Description: helper function that checks to see if a node contains
+//		a specific movie title
+// Parameters:	Node * cur, const string title
+// Returns:	bool
+// History Log: 03/14/18 AW Completed Function
 //-----------------------------------------------------------------------------
 bool BinTree::contains_helper(Node * cur, const string title)
 {

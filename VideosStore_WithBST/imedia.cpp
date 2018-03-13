@@ -1,14 +1,31 @@
+//-----------------------------------------------------------------------------
+// File:	imedia.cpp
+// Programmer:	Anthony Waddell, Christopher Salazar
+// Description: The class defines a media type which is derived from the base class
+// iitems. Imedia can hold release year, title, type of media. DVD inherits imedia
+//-----------------------------------------------------------------------------
+
 #include "imedia.h"
 
 // --------------------------------------------------------------------------
-// destructor
+// Function:	IMedia::~IMedia()
+// Title:	Destructor
+// Description: Destructor
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 IMedia::~IMedia()
 {
 }
 
 // --------------------------------------------------------------------------
-// accessor for m_yearReleased
+// Function:	int IMedia::getYearReleased()
+// Title:	accessor for m_yearReleased
+// Description: gets the release year of the media type
+// Parameters:	N/A
+// Returns:	int
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 int IMedia::getYearReleased()
 {
@@ -16,7 +33,12 @@ int IMedia::getYearReleased()
 }
 
 // --------------------------------------------------------------------------
-// accessor for m_title
+// Function:	string IMedia::getTitle()
+// Title:	accessor for m_title
+// Description: gets the title of the media type
+// Parameters:	N/A
+// Returns:	string
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 string IMedia::getTitle()
 {
@@ -24,7 +46,12 @@ string IMedia::getTitle()
 }
 
 // --------------------------------------------------------------------------
-// accessor for m_mediaTypeAbbrev
+// Function:	char IMedia::getMediaTypeAbbrev()
+// Title:	accessor for m_mediaTypeAbbrev
+// Description: gets the abbreviation of the media type. 'D' for DVD
+// Parameters:	N/A
+// Returns:	char
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 char IMedia::getMediaTypeAbbrev()
 {
@@ -32,7 +59,12 @@ char IMedia::getMediaTypeAbbrev()
 }
 
 // --------------------------------------------------------------------------
-// mutator for m_title
+// Function:	void IMedia::setTitle(string title)
+// Title:	mutator for m_title
+// Description: set the title name of the media
+// Parameters:	N/A
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void IMedia::setTitle(string title)
 {
@@ -40,7 +72,12 @@ void IMedia::setTitle(string title)
 }
 
 // --------------------------------------------------------------------------
-// mutator for m_yearReleased;
+// Function:	void IMedia::setYearReleased(int yearReleased)
+// Title:	mutator for m_yearReleased;
+// Description: set the year the media was released
+// Parameters:	int yearReleased
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void IMedia::setYearReleased(int yearReleased)
 {
@@ -53,7 +90,12 @@ void IMedia::setYearReleased(int yearReleased)
 }
 
 // --------------------------------------------------------------------------
-// mutator for mediaTypeAbbrev;
+// Function:	void IMedia::setMediaTypeAbbrev(char mediaTypeAbbrev)
+// Title:	mutator for mediaTypeAbbrev;
+// Description: set the media type abbreviation. D for DVD
+// Parameters:	char mediaTypeAbbrev
+// Returns:	void
+// History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
 void IMedia::setMediaTypeAbbrev(char mediaTypeAbbrev)
 {
