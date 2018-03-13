@@ -12,9 +12,11 @@ IStore::IStore()
 //
 // --------------------------------------------------------------------------
 IStore::~IStore()
-{
-	// I'm like 99% sure this will cause a fat memory leak
-	//delete m_customerHashPtr;
+{	
+	comedyTree.makeEmpty();
+	dramaTree.makeEmpty();
+	classicalTree.makeEmpty();
+	// delete m_customerHashPtr;// should write a make empty function for this
 }
 
 

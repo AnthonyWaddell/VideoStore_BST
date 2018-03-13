@@ -23,7 +23,6 @@ Hash::~Hash()
 	{
 		if (hashTable[i] != NULL)
 		{
-			// Think this is gonna cause a memory leak
 			delete hashTable[i];
 			hashTable[i] = NULL;
 		}
