@@ -38,6 +38,20 @@ Hash::Hash()
 // --------------------------------------------------------------------------
 Hash::~Hash()
 {
+	this->makeEmpty();
+}
+
+// --------------------------------------------------------------------------
+// Function:	void Hash::makeEmpty()
+// Title:		Empties contents of hash table
+// Description: Iterates over hash table deleting any customer objects and
+//				and then deleting entire hash table
+// Parameters:	N/A
+// Returns:		void
+// History Log: 03/14/18 AW Completed Function
+// --------------------------------------------------------------------------
+void Hash::makeEmpty()
+{
 	for (int i = 0; i < TABLE_SIZE; i++)
 	{
 		if (hashTable[i] != NULL)

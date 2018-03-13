@@ -39,6 +39,8 @@ public:
   // --------------------------------------------------------------------------
   virtual ~Hash();
 
+  void makeEmpty();
+
   // ---------------------------- ~generateHashKey ----------------------------
   // Takes in a customer's ID and hashes it to generate a hashKey
   // Preconditions: None.
@@ -71,7 +73,6 @@ public:
   Customer* retrieve(int key) const;
 
 private:
-  //IPerson** m_hashTable; // A hash table of IPerson pointers
 	Customer *hashTable[TABLE_SIZE];
 };
 

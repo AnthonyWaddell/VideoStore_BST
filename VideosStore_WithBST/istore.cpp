@@ -30,11 +30,10 @@ IStore::IStore()
 // --------------------------------------------------------------------------
 IStore::~IStore()
 {
-	// I'm like 99% sure this will cause a fat memory leak
-	//delete m_customerHashPtr;
-	//I think we just need to delete the Hash * hashcustomers
-	delete holdCustomers;
-	holdCustomers = NULL;
+	comedyTree.makeEmpty();
+	dramaTree.makeEmpty();
+	classicalTree.makeEmpty();
+	m_customerHashPtr.makeEmpty();
 }
 
 // --------------------------------------------------------------------------

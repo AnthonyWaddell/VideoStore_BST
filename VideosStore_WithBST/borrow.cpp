@@ -93,6 +93,7 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				contains = store->getComedyTree().contains(movieTitle);
 				if (!contains)
 				{
+					getline(inputFile, badData);
 					return return_value;
 				}
 				//search inventory of store if not found then break
