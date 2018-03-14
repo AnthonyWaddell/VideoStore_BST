@@ -1,13 +1,6 @@
 //-----------------------------------------------------------------------------
 // File:		BinTree.cpp
 // Programmer:	Anthony Waddell, Christopher Salazar
-// Resources:
-//		for getHeight https://www.geeksforgeeks.org/get-level-of-a-node-in-a-binary-tree/
-//			and https://stackoverflow.com/questions/2597637/finding-height-in-binary-search-tree
-//		for bsttoarray
-//			https://stackoverflow.com/questions/22103718/binary-tree-to-array-wrong-values-inserted-into-array
-//		for arraytobst
-//			https://www.geeksforgeeks.org/sorted-array-to-balanced-bst/
 //-----------------------------------------------------------------------------
 #include "BST.h"
 using namespace std;
