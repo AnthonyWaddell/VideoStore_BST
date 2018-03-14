@@ -47,6 +47,7 @@ int main(void)
   store->buildStore(inputFileCustomers, inputFileMovies);
   store->runStore(inputFileCommands);
 
+  store->makeEmpty();
   delete store;
   store = NULL;
 
