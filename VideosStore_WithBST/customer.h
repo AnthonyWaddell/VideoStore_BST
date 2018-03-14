@@ -15,6 +15,7 @@
 #include "iperson.h"
 #include <string.h>
 #include <stack> // For stack
+#include <vector>	 // For customer DVD inventory
 
 using namespace std;
 
@@ -58,14 +59,17 @@ public:
   // --------------------------------------------------------------------------
   stack<string> getDVDHistory();
 
-  //// ---------------------------- getInventoryLLPtr ---------------------------
-  //// Gets the Linked List inventory of customer that is in sorted order.
-  //// Preconditions: None.
-  //// Postconditions: None.
-  //// Return: Returns a pointer to a Linked List that contains the customer's
-  //// inventory in sorted order.
-  //// --------------------------------------------------------------------------
-  //LinkedList* getInventoryLLPtr();
+  // ---------------------------- getInventory --------------------------------
+  // Gets the list of items that this customer has borrowed
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Returns a list containing the dvd objects this customer has
+  //		 borrowed
+  // --------------------------------------------------------------------------
+  vector<string> getInventory();
+
+  void addInventory(string identifying_property);
+  bool removeInventory(string identifying_property);
 
   // ---------------------------- setHistory ----------------------------------
   // Pushes a borrow or return information into m_dvdHistory which is the stack
@@ -79,8 +83,7 @@ public:
 private:
   int m_id;                             // Unique ID of customer
   stack<string> m_dvdHistory;			// The history of borrow and returns
-						                // history from most recent to oldest
-  /*LinkedList* m_inventoryLLPtr; */        // Customer's inventory of DVDs
+  vector <string> m_inventory;				// The customer's inventory of DVDs
 };
 
 #endif // !CUSTOMER_

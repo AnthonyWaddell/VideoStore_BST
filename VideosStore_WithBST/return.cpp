@@ -64,11 +64,6 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	int key;
 	bool return_value = false;
 
-	//search store inventory to find movie based on movie type, binary tree
-	//change customers history and inventory
-	//change stores inventory.
-
-	//inputFile >> action; don't know if we need this, keeping for now in case we do
 	inputFile >> id;
 	key = store->getCustomerHashTablePtr().generateHashKey(id);
 	s_id = to_string(id);
@@ -90,33 +85,59 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 	case 'F':
 		// Get comedy attributes and return comedy film
 		getline(inputFile, movieTitle, ',');
-		inputFile >> s_releaseYear;
-		release_year = stoi(s_releaseYear);
-		return_value = store->getComedyTree().returnComedy(movieTitle, release_year, store->getComedyTree().getRoot());
-		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + movieTitle + ", " + s_releaseYear);
+		//Check to see that customer had borrowed DVD before returning
+		if (customerInfo->removeInventory(movieTitle))
+		{
+			inputFile >> s_releaseYear;
+			release_year = stoi(s_releaseYear);
+			return_value = store->getComedyTree().returnComedy(movieTitle, release_year, store->getComedyTree().getRoot());
+			customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + movieTitle + ", " + s_releaseYear);
+		}
+		// If customer never borrowed DVD
+		else
+		{
+			cout << "Customer does not a copy of that film to return" << endl;
+		}
 		break;
 	case 'D':
 		// Get drama attributes and return drama film
 		getline(inputFile, director, ',');
 		getline(inputFile, movieTitle, ',');
-		return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
-		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle);
+		//Check to see that customer had borrowed DVD before returning
+		if (customerInfo->removeInventory(movieTitle))
+		{
+			return_value = store->getDramaTree().returnDrama(director, movieTitle, store->getDramaTree().getRoot());
+			customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle);
+		}
+		// If customer never borrowed DVD
+		else
+		{
+			cout << "Customer does not a copy of that film to return" << endl;
+		}
 		break;
 	case 'C':
 		// Get classical attributes and return drama film
 		inputFile >> s_releaseMonth >> s_releaseYear >> firstNameMajor >> lastNameMajor;
 		release_year = stoi(s_releaseYear);
 		release_month = stoi(s_releaseMonth);
-		return_value = store->getClassicalTree().returnClassical
-		(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
-		customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre +  " " + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+		//Check to see that customer had borrowed DVD before returning
+		if (customerInfo->removeInventory(s_releaseMonth += firstNameMajor))
+		{
+			return_value = store->getClassicalTree().returnClassical
+			(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
+			customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+		}
+		// If customer never borrowed DVD
+		else
+		{
+			cout << "Customer does not a copy of that film to return" << endl;
+		}
 		break;
+		// If invalid command
 	default:
 		cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;
 		getline(inputFile, badData);
 		break;
 	}
-
-	//customer inventory not required to be kept
 	return return_value;
 }

@@ -57,7 +57,6 @@ Customer::~Customer()
 // Returns:	int
 // History Log: 03/14/18 AW Completed Function
 // --------------------------------------------------------------------------
-
 int Customer::getID()
 {
 	return m_id;
@@ -85,14 +84,65 @@ stack<string> Customer::getDVDHistory()
 	}
 	return m_dvdHistory;
 }
-//
-//// --------------------------------------------------------------------------
-//// accessor for m_inventoryLLPtr
-//// --------------------------------------------------------------------------
-//LinkedList * Customer::getInventoryLLPtr()
-//{
-//	return m_inventoryLLPtr;
-//}
+
+// --------------------------------------------------------------------------
+// Function:	vector<string> Customer::getInventory()
+// Title:		accessor for m_inventory
+// Description: returns a vector of the DVD items that the customer has borrowed
+// Parameters:	N/A
+// Returns:		vector<string>
+// History Log: 03/14/18 AW Completed Function
+// --------------------------------------------------------------------------
+vector<string> Customer::getInventory()
+{
+	return m_inventory;
+}
+
+// --------------------------------------------------------------------------
+// Function:	void Customer::addInventory(string identifying_property)
+// Title:		add item to inventory
+// Description: adds a representation of a DVD object to the customer's
+//				inventory
+// Parameters:	string identifying_property; the string representation
+//				of the DVD
+// Returns:		void
+// History Log: 03/14/18 AW Completed Function
+// --------------------------------------------------------------------------
+void Customer::addInventory(string identifying_property)
+{
+	m_inventory.push_back(identifying_property);
+}
+
+// --------------------------------------------------------------------------
+// Function:	bool Customer::removeInventory(string identifying_property)
+// Title:		remove item from inventory
+// Description: removes a representation of a DVD object from the customer's
+//				inventory
+// Parameters:	string identifying_property; the string representation
+//				of the DVD
+// Returns:		bool; true if removed, false if not
+// History Log: 03/14/18 AW Completed Function
+// --------------------------------------------------------------------------
+bool Customer::removeInventory(string identifying_property)
+{
+	bool removed = false;
+	vector<string>::iterator i = m_inventory.begin();
+	{
+		while (i != m_inventory.end())
+		{
+			if (*i == identifying_property)
+			{
+				m_inventory.erase(i);
+				removed = true;
+				return removed;
+			}
+			else
+			{
+				i++;
+			}
+		}
+	}
+}
 
 // ---------------------------- setHistory ----------------------------------
 // Function:	void Customer::setHistory(string historyLine)

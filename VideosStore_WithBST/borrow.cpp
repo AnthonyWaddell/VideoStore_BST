@@ -69,8 +69,6 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 	//change customers history and inventory
 	//change stores inventory.
 
-	
-		//inputFile >> action;
 		inputFile >> id;
 		string s_id = to_string(id);
 		key = store->getCustomerHashTablePtr().generateHashKey(id);
@@ -87,8 +85,10 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 			inputFile >> mediaType;
 			inputFile >> genre;
 
+			// Borrow Comedy DVD
 			if (genre == 'F' && mediaType == 'D')
 			{
+				// Search inventory of store if not found, return false
 				getline(inputFile, movieTitle, ',');
 				contains = store->getComedyTree().contains(movieTitle);
 				if (!contains)
@@ -96,25 +96,30 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 					getline(inputFile, badData);
 					return return_value;
 				}
-				//search inventory of store if not found then break
 				inputFile >> s_releaseYear;
 				release_year = stoi(s_releaseYear);
+				// Otherwise, borrow DVD, add this action to customer history and inventory
 				return_value = store->getComedyTree().borrowComedy(movieTitle, release_year, store->getComedyTree().getRoot());
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType +  " " + genre + " " + movieTitle + ", " + s_releaseYear);
+				customerInfo->addInventory(movieTitle);
 			}
+			// Borrow Drama DVD
 			else if (genre == 'D' && mediaType == 'D')
 			{
 				getline(inputFile, director, ',');
-				//search inventory of store if not found then break
+				//search inventory of store if not found, return false
 				getline(inputFile, movieTitle, ',');
 				contains = store->getComedyTree().contains(movieTitle);
 				if (!contains)
 				{
 					return return_value;
 				}
+				// Otherwise, borrow DVD, add this action to customer history and inventory
 				return_value = store->getDramaTree().borrowDrama(director, movieTitle, store->getDramaTree().getRoot());
 				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + director + ", " + movieTitle + ",");
+				customerInfo->addInventory(movieTitle);
 			}
+			// Borrow Classical DVD
 			else if (genre == 'C' && mediaType == 'D')
 			{
 				inputFile >> s_releaseMonth;
@@ -123,17 +128,19 @@ bool Borrow::processAction(std::ifstream& inputFile, IStore* store)
 				inputFile >> lastNameMajor;
 				release_month = stoi(s_releaseMonth);
 				release_year = stoi(s_releaseYear);
+				// Otherwise, borrow DVD, add this action to customer history and inventory
 				return_value = store->getClassicalTree().borrowClassical
 				(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
-				//search inventory of store if not found
-				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + s_releaseMonth + " " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+				customerInfo->setHistory(action + " " + s_id + " " + mediaType + " " + genre + " " + s_releaseMonth + 
+					" " + s_releaseYear + " " + firstNameMajor + " " + lastNameMajor);
+				customerInfo->addInventory(s_releaseMonth += firstNameMajor);
 			}
+			// If invalid
 			else
 			{
 				cout << "Invalid media type or genre: " << "media type: " << mediaType << " " << "genre: " << genre << endl;
 				getline(inputFile, badData);
 				return_value = false;
-
 			}
 		}
 	return return_value;
