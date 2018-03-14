@@ -121,7 +121,7 @@ bool Return::processAction(std::ifstream& inputFile, IStore* store)
 		release_year = stoi(s_releaseYear);
 		release_month = stoi(s_releaseMonth);
 		//Check to see that customer had borrowed DVD before returning
-		if (customerInfo->removeInventory(s_releaseMonth += firstNameMajor))
+		if (customerInfo->removeInventory(s_releaseMonth + firstNameMajor))
 		{
 			return_value = store->getClassicalTree().returnClassical
 			(release_month, release_year, firstNameMajor, lastNameMajor, store->getClassicalTree().getRoot());
