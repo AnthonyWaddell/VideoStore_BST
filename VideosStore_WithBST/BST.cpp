@@ -509,16 +509,6 @@ bool BinTree::borrowClassical(int m_month, int m_year, string m_first, string m_
 }
 
 //-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-//ostream &operator<<(ostream &sout, BinTree &tree)
-//{
-//	tree.inorder_Helper(tree.root);
-//	cout << endl;
-//	return sout;
-//}
-
-//-----------------------------------------------------------------------------
 // Function:	void BinTree::print()
 // Title:	display the tree
 // Description: uses the inorder_Helper function which displays every node in a tree
