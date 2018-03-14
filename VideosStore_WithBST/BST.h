@@ -28,11 +28,14 @@ private:
 	struct Node
 	{
 		DVD* data;						// pointer to data object
-		Node* left_child;					// left subtree pointer
-		Node* right_child;					// right subtree pointer
+		Node* left_child;				// left subtree pointer
+		Node* right_child;				// right subtree pointer
 	};
-	Node* root;								// root of the tree
+	Node* root;							// root of the tree
 
+	// Helper functions 
+	bool contains_helper(Node *cur, const string title);
+	void inorder_Helper(Node *cur) const;
 public:
 
 	BinTree();								// constructor
@@ -60,8 +63,6 @@ public:
 	bool borrowClassical(int m_month, int m_year, string m_first, string m_last, Node *&cur) const;
 
 	void print() const;
-	void inorder_Helper(Node *cur) const;
 	bool contains(const string title);
-	bool contains_helper(Node *cur, const string title);
 };
 #endif

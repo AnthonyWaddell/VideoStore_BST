@@ -68,7 +68,20 @@ public:
   // --------------------------------------------------------------------------
   vector<string> getInventory();
 
+  // ---------------------------- addInventory --------------------------------
+  // Adds a string that represent a borrowed DVD to customer's history container
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: Void
+  // --------------------------------------------------------------------------
   void addInventory(string identifying_property);
+
+  // ---------------------------- removeInventory -----------------------------
+  // Removes a string that represent a borrowed DVD to customer's history container
+  // Preconditions: None.
+  // Postconditions: None.
+  // Return: True if item was removed, false if not
+  // --------------------------------------------------------------------------
   bool removeInventory(string identifying_property);
 
   // ---------------------------- setHistory ----------------------------------
@@ -83,7 +96,7 @@ public:
 private:
   int m_id;                             // Unique ID of customer
   stack<string> m_dvdHistory;			// The history of borrow and returns
-  vector <string> m_inventory;				// The customer's inventory of DVDs
+  vector <string> m_inventory;			// The customer's inventory of DVDs
 };
 
 #endif // !CUSTOMER_

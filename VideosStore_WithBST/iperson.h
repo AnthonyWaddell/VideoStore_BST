@@ -74,10 +74,11 @@ public:
   // --------------------------------------------------------------------------
   string getLastName();
 
-protected:				// CHANGED TO PROTECTED SO CUSTOMER CAN ACCESS NAME VARIABLES
+protected:				
+
   string m_firstName;	// First name of IPerson
   string m_lastName;	// Last name of IPerson
-  int m_hashKey;           // Hash key of IPerson
+  int m_hashKey;        // Hash key of IPerson
 };
 
 #endif // !IPERSON_

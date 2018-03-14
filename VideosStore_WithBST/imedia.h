@@ -43,33 +43,6 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(std::string& genDisplayString) = 0;
 
-  //// ---------------------------- displaySearchKey ----------------------------
-  //// Displays the search key information of the media.
-  //// Preconditions: None.
-  //// Postconditions: outStream contains media search key information.
-  //// Parameter: outStream - A out stream for the display.
-  //// --------------------------------------------------------------------------
-  //virtual void displaySearchKey(std::ostream& outStream) = 0;
-
-  //// ---------------------------- genSearchKey --------------------------------
-  //// Generates an media that only contains its search key information.
-  //// Preconditions: None.
-  //// Postconditions: This media has its search key information updated. 
-  //// ifStream will be at the end of its line.
-  //// Parameter: inputFile - A file the contains the search key of the media.
-  //// --------------------------------------------------------------------------
-  //virtual void genSearchKey(std::ifstream& inputFile) = 0;
-
-  //// ---------------------------- compareSearchKey ----------------------------
-  //// Detects if media is the same purely based of its search key information.
-  //// Preconditions: itemPtr is a type of media.
-  //// Postconditions: None.
-  //// Parameter: itemPtr - Item to compare against to see if it is the same
-  //// item based of a search key information.
-  //// Return: Returns true if item is same as item with search key information
-  //// --------------------------------------------------------------------------
-  //virtual bool compareSearchKey(IItem* itemPtr) = 0;
-
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an item so all of this media fields are the same as
   // the parameters items fields.
@@ -87,7 +60,27 @@ public:
   // Return: Returns true if media is the same, false otherwise.
   // --------------------------------------------------------------------------
   virtual bool operator==(IItem* itemPtr) = 0;
+
+  // ---------------------------- operator< -----------------------------------
+  // Compares two IItem objects to see if this is less than what it is being
+  // compared against
+  // Preconditions: itemPtr is a type of media
+  // Postconditions: None.
+  // Parameter: itemPtr - An item to compare against.
+  // Return: Returns true if this item is less than what it is being
+  // compared against, false if not
+  // --------------------------------------------------------------------------
   virtual bool operator<(IItem* itemPtr) = 0;
+
+  // ---------------------------- operator> -----------------------------------
+  // Compares two IItem objects to see if this is greater than what it is being
+  // compared against
+  // Preconditions: itemPtr is a type of media
+  // Postconditions: None.
+  // Parameter: itemPtr - An item to compare against.
+  // Return: Returns true if this item is greater than what it is being
+  // compared against, false if not
+  // --------------------------------------------------------------------------
   virtual bool operator>(IItem* itemPtr) = 0;
 
   // ---------------------------- getYearReleased -----------------------------
@@ -139,6 +132,7 @@ public:
   void setMediaTypeAbbrev(char mediaTypeAbbrev);
 
 protected:
+
   string m_title;    // Title of media
   int m_yearReleased;     // Year media was released
   char m_mediaTypeAbbrev; // The symbol for the type of media

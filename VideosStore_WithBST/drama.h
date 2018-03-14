@@ -43,35 +43,6 @@ public:
   // --------------------------------------------------------------------------
   virtual void genDisplay(string& genDisplayString);
 
-  //// ---------------------------- displaySearchKey ----------------------------
-  //// Displays the search key information of the drama DVD.
-  //// Preconditions: None.
-  //// Postconditions: outStream contains drama DVD search key information.
-  //// Parameter: outStream - A out stream for the display.
-  //// --------------------------------------------------------------------------
-  //virtual void displaySearchKey(std::ostream& outStream);
-
-  //// ---------------------------- genSearchKey --------------------------------
-  //// Generates an drama DVD that only contains its search key information.
-  //// Preconditions: None.
-  //// Postconditions: This drama DVD has its search key information updated. 
-  //// ifStream will be at the end of its line.
-  //// Parameter: inputFile - A file the contains the search key of the drama 
-  //// DVD.
-  //// --------------------------------------------------------------------------
-  //virtual void genSearchKey(std::ifstream& inputFile);
-
-  //// ---------------------------- compareSearchKey ----------------------------
-  //// Detects if drama DVD is the same purely based of its search key 
-  //// information.
-  //// Preconditions: itemPtr is a type of drama DVD.
-  //// Postconditions: None.
-  //// Parameter: itemPtr - Item to compare against to see if it is the same
-  //// item based of a search key information.
-  //// Return: Returns true if item is same as item with search key information
-  //// --------------------------------------------------------------------------
-  //virtual bool compareSearchKey(IItem* itemPtr);
-
   // ---------------------------- genCopy -------------------------------------
   // Generates a copy of an drama DVD so all of this drama DVD fields are the 
   // same as the parameters items fields.
@@ -104,7 +75,27 @@ public:
   // Return: Returns true if drama DVD is the same, false otherwise.
   // --------------------------------------------------------------------------
   virtual bool operator==(IItem* itemPtr);
+
+  // ---------------------------- operator< -----------------------------------
+  // Compares two drama dvds to see if this is less than what it is being
+  // compared against
+  // Preconditions: itemPtr is a type of drama DVD.
+  // Postconditions: None.
+  // Parameter: itemPtr - An item to compare against.
+  // Return: Returns true if this drama dvd is less than what it is being
+  // compared against, false if not
+  // --------------------------------------------------------------------------
   virtual bool operator<(IItem* itemPtr);
+
+  // ---------------------------- operator> -----------------------------------
+  // Compares two drama dvds to see if this is greater than what it is being
+  // compared against
+  // Preconditions: itemPtr is a type of drama DVD.
+  // Postconditions: None.
+  // Parameter: itemPtr - An item to compare against.
+  // Return: Returns true if this drama dvd is greater than what it is being
+  // compared against, false if not
+  // --------------------------------------------------------------------------
   virtual bool operator>(IItem* itemPtr);
 
 private:

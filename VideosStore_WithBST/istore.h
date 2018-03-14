@@ -61,14 +61,6 @@ public:
   // --------------------------------------------------------------------------
   virtual void runStore(ifstream& inputFileCommands) = 0;
 
-  // ---------------------------- getInventoryLLPtr ---------------------------
-  // Gets the Linked List inventory of the IStore.
-  // Preconditions: None.
-  // Postconditions: None.
-  // Return: Returns Linked List object of the inventory list of IStore.
-  // ---------------------------------------------------------------------------------------------------remove this later
-  //LinkedList* getInventoryLLPtr();
-
   // ---------------------------- getCustomerHashTablePtr ---------------------
   // Gets the Hash Table containing the customers.
   // Preconditions: None.
@@ -101,7 +93,7 @@ public:
   // --------------------------------------------------------------------------
   BinTree &getClassicalTree();
 
-protected: //changed this from private so we can access hashtable & linked list
+protected:
   // ---------------------------- buildCustomers ------------------------------
   // Pure virtual method for building a store's customers.
   // Preconditions: Valid formatted input file.

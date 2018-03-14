@@ -86,6 +86,7 @@ public:
   void setItemPtr(IItem* itemPtr);
 
 private:
+
   IItem* m_itemPtr;    // Item pointer to item of node
   Node* m_nextNodePtr; // The next pointer to the next node
 };
