@@ -102,12 +102,8 @@ void Classical::genCopy(IItem * itemPtr)
 // --------------------------------------------------------------------------
 void Classical::buildDVD(char genre, ifstream & inputFileInventory)
 {
-	// This needs error handling
 	string comma = "";
 
-	// C, 10, Michael Curtiz, Casablanca, Ingrid Bergman 8 1942
-	// C, 10, Michael Curtiz, Casablanca, Humphrey Bogart 8 1942
-	// C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
 	this->setGenreAbbrev(genre);
 	getline(inputFileInventory, comma, ' ');
 	inputFileInventory >> this->m_stock;
@@ -115,9 +111,7 @@ void Classical::buildDVD(char genre, ifstream & inputFileInventory)
 	getline(inputFileInventory, this->m_director, ',');
 	getline(inputFileInventory, this->m_title, ',');
 	inputFileInventory >> this->m_majorActorFirstName;
-	//maybe a cin.get() or cin.ignore() to eat up the space
 	inputFileInventory >> this->m_majorActorLastName;
-	//maybe a cin.get() or cin.ignore() to eat up the space
 	inputFileInventory >> this->m_monthReleased;
 	inputFileInventory >> this->m_yearReleased;
 }
@@ -168,6 +162,7 @@ bool Classical::operator<(IItem * itemPtr)
 		{
 			return_value = true;
 		}
+		// If both items have have same release date, compare by actor
 		else if (this->getMonthReleased() == temp->getMonthReleased())
 		{
 			if (this->getMajorActorLastName() < temp->getMajorActorLastName())
@@ -183,7 +178,6 @@ bool Classical::operator<(IItem * itemPtr)
 			}
 		}
 	}
-	
 	return return_value;
 }
 
@@ -211,6 +205,7 @@ bool Classical::operator>(IItem * itemPtr)
 		{
 			return_value = true;
 		}
+		// If both items have same release date, compare by actor
 		else if (this->getMonthReleased() == temp->getMonthReleased())
 		{
 			if (this->getMajorActorLastName() > temp->getMajorActorLastName())
@@ -226,7 +221,6 @@ bool Classical::operator>(IItem * itemPtr)
 			}
 		}
 	}
-
 	return return_value;
 }
 
