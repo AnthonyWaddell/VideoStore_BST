@@ -30,10 +30,6 @@ IStore::IStore()
 // --------------------------------------------------------------------------
 IStore::~IStore()
 {
-	comedyTree.makeEmpty();
-	dramaTree.makeEmpty();
-	classicalTree.makeEmpty();
-	m_customerHashPtr.makeEmpty();
 }
 
 // --------------------------------------------------------------------------
