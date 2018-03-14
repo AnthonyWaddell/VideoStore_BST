@@ -224,16 +224,29 @@ bool BinTree::insertClassical(Node *& cur, DVD * datum)
 	// Duplicate node found, do not insert
 	else if (*temp == *&cur->data)
 	{
+		datum->setStock(datum->getStock() + cur->data->getStock());
 		inserted = false;
 	}
 	// Insert left for smaller data value
 	else if (*datum < &*cur->data)
 	{
+		// If they are same title with different actor, they share m_inventory
+		if (cur->data->getTitle() == datum->getTitle())
+		{
+			datum->setStock(datum->getStock() + cur->data->getStock());
+			cur->data->setStock(datum->getStock());
+		}
 		insertClassical(cur->left_child, datum);
 	}
 	// Insert right for larger data value
 	else
 	{
+		// If they are same title with different actor, they share m_inventory
+		if (cur->data->getTitle() == datum->getTitle())
+		{
+			datum->setStock(datum->getStock() + cur->data->getStock());
+			cur->data->setStock(datum->getStock());
+		}
 		insertClassical(cur->right_child, datum);
 	}
 	return inserted;
