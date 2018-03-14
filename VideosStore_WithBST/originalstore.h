@@ -45,7 +45,7 @@ public:
 
 
 
-  virutal void makeEmpty();
+  virtual void makeEmpty();
   
   // ---------------------------- runStore ------------------------------------
   // Method for running a store.
