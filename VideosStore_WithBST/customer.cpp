@@ -134,7 +134,6 @@ bool Customer::removeInventory(string identifying_property)
 			{
 				m_inventory.erase(i);
 				removed = true;
-				return removed;
 			}
 			else
 			{
@@ -142,6 +141,7 @@ bool Customer::removeInventory(string identifying_property)
 			}
 		}
 	}
+	return removed;
 }
 
 // ---------------------------- setHistory ----------------------------------
