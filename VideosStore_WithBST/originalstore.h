@@ -44,7 +44,12 @@ public:
   virtual void buildStore(std::ifstream& inputFileCustomers, std::ifstream& inputFileInventory);
 
 
-
+  // ---------------------------- makeEmpty ----------------------------------
+  // Virutal method to make the original store memory allocated be deleted
+  // Preconditions: None
+  // Postconditions: None.
+  // Parameters: None
+  // --------------------------------------------------------------------------
   virtual void makeEmpty();
   
   // ---------------------------- runStore ------------------------------------
