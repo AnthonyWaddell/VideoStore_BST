@@ -153,8 +153,6 @@ bool Comedy::operator<(IItem * itemPtr)
 }
 
 // --------------------------------------------------------------------------
-// -- I think the comparison is wrong. should be > ???? -----
-
 // Function:	bool Comedy::operator>(IItem * itemPtr)
 // Title:	compare comedy types
 // Description: return true if the title of the movie is greater than or if the 
@@ -168,13 +166,13 @@ bool Comedy::operator>(IItem * itemPtr)
 	bool return_value = false;
 	Comedy *temp = static_cast<Comedy*>(itemPtr);
 
-	if (this->getTitle() < temp->getTitle())
+	if (this->getTitle() > temp->getTitle())
 	{
 		return_value = true;
 	}
 	else if (this->getTitle() == temp->getTitle())
 	{
-		if (this->getYearReleased() < temp->getYearReleased())
+		if (this->getYearReleased() > temp->getYearReleased())
 		{
 			return_value = true;
 		}
