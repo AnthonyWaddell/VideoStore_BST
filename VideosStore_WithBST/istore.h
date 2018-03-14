@@ -62,6 +62,13 @@ public:
   virtual void runStore(ifstream& inputFileCommands) = 0;
 
 	
+  // ---------------------------- makeEmtpy ------------------------------------
+  // Pure virtual method for deleting the store memory.
+  // Preconditions: None
+  // Postconditions: None
+  // Parameters: None
+  // Return: None
+  // --------------------------------------------------------------------------
   virtual void makeEmpty() = 0;
 	
   // ---------------------------- getCustomerHashTablePtr ---------------------
