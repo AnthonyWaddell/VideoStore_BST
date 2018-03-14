@@ -24,6 +24,14 @@ OriginalStore::~OriginalStore()
 {
 }
 
+// --------------------------------------------------------------------------
+// Function:	void OriginalStore::makeEmpty() 
+// Title:	makeEmpty
+// Description: delete the trees for the dvd types to avoid memory leaks.
+// Parameters:	N/A
+// Returns:	N/A
+// History Log: 03/14/18 AW Completed Function
+// --------------------------------------------------------------------------
 void OriginalStore::makeEmpty() 
 {
 	comedyTree.makeEmpty();
@@ -77,7 +85,7 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 			continue;
 		}
 		else
-		{	// Probaby want to delete this pointer after every iteration
+		{	
 			action_ptr->processAction(inputFileCommands, this);
 			delete action_ptr;
 			action_ptr = NULL;
