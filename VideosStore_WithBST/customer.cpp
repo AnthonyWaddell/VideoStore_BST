@@ -25,8 +25,6 @@ using namespace std;
 // --------------------------------------------------------------------------
 Customer::Customer(string firstName, string lastName, int id)
 {
-	//IPerson *new_customer = new IPerson(firstName, lastName, id);
-	//IPerson(firstName, lastName, id);
 	m_firstName = firstName;
 	m_lastName = lastName;
 	m_id = id;
@@ -43,10 +41,7 @@ Customer::Customer(string firstName, string lastName, int id)
 // --------------------------------------------------------------------------
 Customer::~Customer()
 {
-	//while (!m_inventoryLLPtr->isEmpty())
-	//{
-	//	m_inventoryLLPtr->removeFront();
-	//}
+
 }
 
 // --------------------------------------------------------------------------
@@ -78,8 +73,8 @@ stack<string> Customer::getDVDHistory()
 	while (!m_dvdHistory.empty())
 	{	
 		cout << counter << ". " << m_dvdHistory.top();
-	    m_dvdHistory.pop();
-	    cout << "\n"; // go to next line
+	    	m_dvdHistory.pop();
+	    	cout << "\n"; // go to next line
 		counter++;
 	}
 	return m_dvdHistory;
