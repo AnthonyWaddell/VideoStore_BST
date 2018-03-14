@@ -43,6 +43,10 @@ public:
   // --------------------------------------------------------------------------
   virtual void buildStore(std::ifstream& inputFileCustomers, std::ifstream& inputFileInventory);
 
+
+
+  virutal void makeEmpty();
+  
   // ---------------------------- runStore ------------------------------------
   // Method for running a store.
   // Preconditions: Valid formatted input file.
