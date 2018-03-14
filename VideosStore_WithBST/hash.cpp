@@ -60,7 +60,6 @@ void Hash::makeEmpty()
 			hashTable[i] = NULL;
 		}
 	}
-	delete[] hashTable;
 }
 
 // --------------------------------------------------------------------------
