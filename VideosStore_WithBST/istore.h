@@ -61,6 +61,9 @@ public:
   // --------------------------------------------------------------------------
   virtual void runStore(ifstream& inputFileCommands) = 0;
 
+	
+  virtual void makeEmpty() = 0;
+	
   // ---------------------------- getCustomerHashTablePtr ---------------------
   // Gets the Hash Table containing the customers.
   // Preconditions: None.
