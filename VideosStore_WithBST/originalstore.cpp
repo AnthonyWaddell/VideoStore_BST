@@ -24,6 +24,14 @@ OriginalStore::~OriginalStore()
 {
 }
 
+void OriginalStore::makeEmpty() 
+{
+	comedyTree.makeEmpty();
+	dramaTree.makeEmpty();
+	classicalTree.makeEmpty();
+	m_customerHashPtr.makeEmpty();
+}
+
 // --------------------------------------------------------------------------
 // Function:	void OriginalStore::buildStore(std::ifstream & inputFileCustomers, std::ifstream & inputFileInventory)
 // Title:	build the store database
