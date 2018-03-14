@@ -79,6 +79,8 @@ void OriginalStore::runStore(std::ifstream & inputFileCommands)
 		else
 		{	// Probaby want to delete this pointer after every iteration
 			action_ptr->processAction(inputFileCommands, this);
+			delete action_ptr;
+			action_ptr = NULL;
 		}
 	}
 }
